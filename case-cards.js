@@ -157,12 +157,12 @@ document.body.appendChild(ov);
 var pn=ov.firstChild,cur=0,idx=0;
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
 function all(c,i){
- var HERO=["/work/vw/dubai-tiguan.jpg","/work/saffron/table.jpg","/work/claimqi/art-cover.jpg","/work/atorie/frames/hero-1.jpg","/work/dolce/frames/tk-1.jpg"];var out=[{overview:true,k:"OVERVIEW",img:(HERO[i]||"/plates/case-card"+(i+1)+".jpg"),cover:true}].concat(c.slides);
+ var HERO=window.__ccHero=["/work/vw/dubai-tiguan.jpg","/work/saffron/table.jpg","/work/claimqi/art-cover.jpg","/work/atorie/frames/hero-1.jpg","/work/dolce/frames/tk-1.jpg"];var out=[{overview:true,k:"OVERVIEW",img:(HERO[i]||"/plates/case-card"+(i+1)+".jpg"),cover:true}].concat(c.slides);
  if(c.rollout)out.push({k:"ROLL-OUT + WHAT I'D WATCH",h:"How it travels. What tells us it works.",p:["This is a proposal, so there are no results to claim. These are the signals I would track."],rollout:c.rollout});
  out.push({k:"THE NEXT STEP",h:"Same method. Your brand.",p:["Business problem, cultural truth, idea, story, direction. In a one-week sprint, from brief to visual plan."],big:["Brief.","Insight.","Idea.","Film."],cta:true});
  return out}
 function media(s,c,i){
- var bgimg=s.cover?s.img:(s.bg||"/plates/case-card"+(i+1)+".jpg"),h='<div class="cc-md'+(s.cover?' cover':'')+(s.bg&&!s.img&&!s.frames?' vis':'')+'"><div class="bg" style="background-image:url('+bgimg+')"></div><div class="cc-pd">';
+ var bgimg=s.cover?s.img:(s.bg||(window.__ccHero&&window.__ccHero[i])||"/plates/case-card"+(i+1)+".jpg"),h='<div class="cc-md'+(s.cover?' cover':'')+(s.bg&&!s.img&&!s.frames?' vis':'')+'"><div class="bg" style="background-image:url('+bgimg+')"></div><div class="cc-pd">';
  if(s.cover)h+='<div class="cc-im" style="background-image:url('+s.img+')"></div>';
  else if(s.frames){
   if(s.img)h+='<div class="cc-im" style="background-image:url('+s.img+')"></div>';
