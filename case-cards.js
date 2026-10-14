@@ -211,4 +211,21 @@ addEventListener('keydown',function(e){if(!ov.classList.contains('on'))return;if
 ['wheel','touchmove'].forEach(function(t){ov.addEventListener(t,function(e){e.stopPropagation()},{passive:true})});
 var sx=null;pn.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
 pn.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>60)go(idx+(dx<0?1:-1))},{passive:true});
+
+/* UGC cards: click opens a vertical looping video player (video/ugc/*.mp4) */
+var UG=[['trust','BRAND STORY · Talking head'],['saves','TRAVEL · POV drive'],['follows','LIFESTYLE · Routine vlog'],['comments','BRAND UGC · Pet + product']];
+var uc=document.createElement('style');uc.textContent='.card3d:has(img[src*="ugc-card"]){cursor:pointer}.ug-ov{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.84);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}.ug-ov.on{display:flex}.ug-bx{position:relative;border-radius:18px;overflow:hidden;background:#000;box-shadow:0 30px 90px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.14);max-width:92vw}.ug-bx video{display:block;max-height:88vh;max-width:92vw;width:auto;height:auto;min-height:320px;background:#000}.ug-lb{position:absolute;left:16px;top:14px;font:500 10.5px/1 "Inter Tight",Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.8)}.ug-bt{position:absolute;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.45);color:#fff;font:500 10.5px/1 "Inter Tight",Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;border-radius:99px;padding:10px 14px;cursor:pointer}.ug-bt:hover{background:rgba(255,255,255,.18)}.ug-x{right:12px;top:8px;width:36px;height:36px;padding:0;font-size:14px}.ug-m{right:12px;bottom:14px}';document.head.appendChild(uc);
+var uo=document.createElement('div');uo.className='ug-ov';uo.innerHTML='<div class="ug-bx" role="dialog" aria-modal="true"><video playsinline loop preload="metadata"></video><span class="ug-lb"></span><button class="ug-bt ug-x" aria-label="Close">✕</button><button class="ug-bt ug-m" aria-label="Toggle sound">Sound on</button></div>';
+document.body.appendChild(uo);
+var uv=uo.querySelector('video'),um=uo.querySelector('.ug-m');
+function ugOpen(i){if(!UG[i])return;uv.src='/video/ugc/'+UG[i][0]+'.mp4';uv.poster='/plates/ugc-card'+(i+1)+'.jpg';uv.muted=false;um.textContent='Sound on';uo.querySelector('.ug-lb').textContent=UG[i][1];uo.classList.add('on');var p=uv.play();if(p&&p.catch)p.catch(function(){uv.muted=true;um.textContent='Sound off';uv.play().catch(function(){})});try{history.replaceState(null,'','#ugc-'+UG[i][0])}catch(e){}}
+function ugClose(){uo.classList.remove('on');uv.pause();uv.removeAttribute('src');uv.load();try{if(/^#ugc-/.test(location.hash))history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+document.addEventListener('click',function(e){var c=e.target.closest&&e.target.closest('.card3d');if(!c)return;var im=c.querySelector('img[src*="ugc-card"]');if(!im)return;var m=/ugc-card(\d)/.exec(im.getAttribute('src'));if(m)ugOpen(+m[1]-1)});
+uo.addEventListener('click',function(e){if(e.target===uo)ugClose()});
+uo.querySelector('.ug-x').onclick=ugClose;
+um.onclick=function(){uv.muted=!uv.muted;um.textContent=uv.muted?'Sound off':'Sound on'};
+uv.addEventListener('click',function(){if(uv.paused)uv.play();else uv.pause()});
+addEventListener('keydown',function(e){if(uo.classList.contains('on')&&e.key==='Escape')ugClose()});
+function ugHash(){var m=/^#ugc-(\w+)/.exec(location.hash);if(!m)return;for(var k=0;k<UG.length;k++)if(UG[k][0]===m[1])ugOpen(k)}
+ugHash();addEventListener('hashchange',ugHash);
 })();
