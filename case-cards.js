@@ -199,7 +199,8 @@ function render(){
  var nx=S[idx+1];if(nx){[nx.img].concat((nx.frames||[]).map(function(f){return f[0]})).forEach(function(u){if(u){var im=new Image();im.src=u}})}
 }
 function go(i){var n=all(CASES[cur],cur).length;if(i<0||i>=n)return;idx=i;render()}
-window.openCase=function(i){if(!CASES[i])return;cur=i;idx=0;render();ov.classList.add('on')};
+function preload(i){all(CASES[i],i).forEach(function(x){[x.img,x.bg].concat((x.frames||[]).map(function(f){return f[0]})).forEach(function(u){if(u){var im=new Image();im.src=u}})})}
+window.openCase=function(i){if(!CASES[i])return;cur=i;idx=0;render();ov.classList.add('on');preload(i)};
 function close(){ov.classList.remove('on')}
 ov.addEventListener('click',function(e){if(e.target===ov)close()});
 addEventListener('keydown',function(e){if(!ov.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')go(idx+1);if(e.key==='ArrowLeft')go(idx-1)});
