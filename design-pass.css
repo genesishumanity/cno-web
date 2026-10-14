@@ -1,0 +1,2 @@
+/* design-pass-1: case cards are full-bleed photos floating on the scene (no black panel). Remove the <link> in index.html to revert. */
+.lcard{-webkit-mask-image:linear-gradient(180deg,#000 88%,transparent);mask-image:linear-gradient(180deg,#000 88%,transparent)}
