@@ -1,6 +1,7 @@
 /* Case cards: opens a swipeable "case file" when a Case Studies card is clicked. Additive only. */
 (function(){
 var ROLE="Strategy, concept, creative direction";
+var mq=document.createElement('style');mq.textContent='.ccmq{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}.ccmq-t{display:inline-block;white-space:nowrap;animation:ccmq 60s linear infinite;will-change:transform}.ccmq-t span::after{content:"\\00b7";margin:0 1.6em;opacity:.55}@keyframes ccmq{to{transform:translateX(-50%)}}@media (prefers-reduced-motion:reduce){.ccmq-t{animation:none}}';document.head.appendChild(mq);
 var A="/work/atorie/frames/",D="/work/dolce/frames/",Q="/work/claimqi/",V="/work/vw/",S="/work/saffron/";
 var CASES=[
 /* 0 — VOLKSWAGEN TIGUAN */
