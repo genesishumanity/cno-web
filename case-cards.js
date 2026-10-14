@@ -1,143 +1,167 @@
 /* Case cards: opens a swipeable "case file" when a Case Studies card is clicked. Additive only. */
 (function(){
 var ROLE="Strategy, concept, creative direction";
+var A="/work/atorie/frames/",D="/work/dolce/frames/",Q="/work/claimqi/";
 var CASES=[
 /* 0 — VOLKSWAGEN TIGUAN */
-{brand:"Volkswagen Tiguan",cat:"AUTOMOTIVE",title:"I choose VW for my family.",idea:"Choosing enough is a statement.",role:ROLE,
- brief:"In Dubai a car can be a visible status object, chosen partly for the people outside it. The family living with it pays the daily price.",
+{brand:"Volkswagen Tiguan",cat:"AUTOMOTIVE",title:"I choose VW for my family.",idea:"Choose enough.",role:ROLE,
+ brief:"In Dubai a car is often chosen for the people outside it. The family inside pays for it every day.",
  insight:"The family that matters is inside the car, not watching from the street.",
  slides:[
- {k:"THE TENSION",h:"A car bought for everyone else.",p:["In Dubai and the wider Gulf, a car can become a status object, chosen partly for the people outside the vehicle.","The trade-offs show up in family life: parking, narrow residential spaces, children climbing down from a high vehicle, added cost.","The campaign never attacks luxury owners. It lets the inconvenience speak for itself."],big:["Status","for others.","Life","for the family."]},
- {k:"THE REFRAME",h:"Who are you actually choosing this car for?",p:["The category asks: what will people think when they see my car?","Volkswagen changes the question. The Tiguan becomes the decision of someone who no longer needs to prove anything."],big:["What will people think?","→","Who am I choosing this for?"]},
- {k:"THE PROMISE",h:"Self-assurance, not compromise.",p:["Volkswagen is the confident choice for people who value the life inside the car more than the impression outside it.","Luxury asks: what will people think? Volkswagen asks: who cares?"],big:["Choose","enough."]},
- {k:"HERO FILM",h:"Four scenes. One wink.",list:["The setup: a villa community at golden hour. The Tiguan family waits for friends, relaxed.","The prestige SUV arrives: it can't park. Forward, back, forward again.","The struggle: slow-motion comedy. A child lowers themselves from the unusually high SUV.","The contrast: back to the Tiguan family. One parent gives a small smile and a wink."],p:["End frame: I choose VW for my family."]},
- {k:"TONE + OOH",h:"The restraint is the message.",p:["Witty, culturally observant, premium, understated, slightly cheeky. The joke is always about unnecessary excess, never about wealth.","OOH: baby-blue background, the Tiguan family, one italic line. Deliberately minimal against Dubai's crowded signage."],big:["I choose VW","for my family."]}
+ {k:"THE TENSION",h:"A car bought for everyone else.",p:["In the Gulf a car can be a status object. Big SUVs, tight parking, kids climbing down from a seat that's too high.","I never attack luxury owners. I let the inconvenience speak."],big:["Status for others.","Life for the family."]},
+ {k:"THE REFRAME",h:"Who are you choosing this for?",p:["The category asks what people will think. I ask something else, and the Tiguan becomes the choice of someone with nothing left to prove."],big:["What will people think?","Who am I choosing this for?"]},
+ {k:"THE PROMISE",h:"Self-assurance, not compromise.",p:["Luxury asks: what will people think? Volkswagen asks: who cares?","Calm, amused, never bitter."],big:["Choose","enough."]},
+ {k:"HERO FILM",h:"Four scenes. One wink.",p:["It ends on a wink. Volkswagen isn't jealous, isn't defending itself and doesn't need to prove anything."],scenes:[["The setup","A villa street at golden hour. The Tiguan family waits for friends, relaxed."],["The arrival","A big prestige SUV tries to park. Forward, back, forward again."],["The struggle","Slow-motion comedy. A child lowers herself from the unusually high seat."],["The contrast","Back to the Tiguan family. One parent, a small smile, a wink."]]},
+ {k:"TONE + OOH",h:"The restraint is the message.",p:["Witty, premium, understated, a little cheeky. The joke is always about excess, never about wealth.","On the street: baby-blue, one line, nothing else."],big:["I choose VW","for my family."]}
  ]},
 /* 1 — SAFFRON & CO. */
 {brand:"Saffron & Co.",cat:"HOSPITALITY",title:"Don't bother at home. Come to us.",idea:"Nobody goes to a restaurant just for the food.",role:ROLE,
- brief:"A premium brunch restaurant in Dubai with three locations. Strong product, invisible on social.",
- insight:"Food is available at home. What is scarce is a table with people who reflect your lifestyle and values.",
+ brief:"A premium brunch place in Dubai with three locations. Beautiful product, invisible online.",
+ insight:"Nobody goes to a restaurant just for the food. They go for the people.",
  slides:[
- {k:"THE CHALLENGE",h:"Strong product. No story.",p:["Three locations, a beautifully designed space, an audience of 25–40 year-old expats and Emiratis.","Polished food photography and menu updates generated no engagement. Nothing in the brand's communication reflected the founder's family-gathering vision."]},
- {k:"THE INSIGHT",h:"Nobody goes to a restaurant just for the food.",p:["They go for the people. People just like them.","Saffron's real product is not brunch. It is belonging, and the brand had never said so."],big:["Not brunch.","Belonging."]},
- {k:"THE IDEA",h:"Don't bother at home. Come to us.",p:["A campaign built on radical honesty: cooking at home is a burden. Saffron offers liberation, from the kitchen and from isolation.","Saffron becomes the place where families come alive."],big:["Don't bother","at home.","Come to us."]},
- {k:"HERO FILM",h:"A family, transformed.",list:["The struggle: a Saturday morning at home. A tired mother, a restless child, a father scrolling. No music, only domestic fatigue.","The turn: a phone buzzes. A WhatsApp from a friend at Saffron. The parents exchange a glance.","The arrival: a wide table, warm light, the same family transformed. Joy of being together, unhurried.","The close: the screen blurs. DON'T BOTHER AT HOME. COME TO US."]},
- {k:"INFLUENCER STRATEGY",h:"People trust people like them.",p:["5–8 Dubai family micro-influencers (50K–200K followers) visit Saffron with their real families.","No script. Warm, spontaneous and honest, not staged."]},
- {k:"PROJECTED TARGETS",h:"Where this should land.",list:["+40–60% engagement rate from current baseline","+25–35% shift in family-first brand perception","+20% follower growth","+20% weekend family bookings"],p:["Working targets within three months of launch. Not results."]}
+ {k:"THE CHALLENGE",h:"Strong product. No story.",p:["Three locations, a beautiful space, expats and Emiratis aged 25–40. The content was polished food shots and menu updates, and nobody reacted.","None of it carried the founder's idea: families gathering."],big:["Great food.","No reason to care."]},
+ {k:"THE INSIGHT",h:"It was never about brunch.",p:["Food is available at home. What's scarce is a table with people like you.","Saffron's real product is belonging, and the brand had never said so."],big:["Not brunch.","Belonging."]},
+ {k:"THE IDEA",h:"Radical honesty.",p:["Cooking at home is a burden. Saffron offers a way out, of the kitchen and of isolation."],big:["Don't bother at home.","Come to us."]},
+ {k:"HERO FILM",h:"From heavy to warm.",p:["Same family, two worlds. The music only arrives at Saffron."],scenes:[["The struggle","A Saturday morning at home. A tired mother, a restless child, a father scrolling. No music."],["The turn","A phone buzzes. A friend at Saffron. The parents share a glance."],["The arrival","A wide table, warm light, the same family transformed. Unhurried."],["The close","The screen blurs. Don't bother at home. Come to us."]]},
+ {k:"INFLUENCER STRATEGY",h:"People trust people like them.",p:["5–8 Dubai family micro-creators (50K–200K followers) visit with their real families. No script. Warm, honest, unstaged."],big:["5–8 families.","Zero scripts."]},
+ {k:"PROJECTED TARGETS",h:"Where this should land.",p:["Working targets within three months of launch. Not results."],stats:[["+40–60%","Engagement rate"],["+25–35%","Family-first perception"],["+20%","Follower growth"],["+20%","Weekend family bookings"]]}
  ]},
 /* 2 — CLAIMQI */
 {brand:"ClaimQI",cat:"B2B · AI HEALTHCARE",title:"Not more flags. Better decisions.",idea:"Know when not to act.",role:ROLE,
- brief:"Payer teams are drowning in data. More claims, more flags, more noise, and valuable cases get lost.",
- insight:"The better question is not “does this claim look suspicious?” but “does this claim actually deserve action?”",
+ brief:"Payer teams are drowning in flags. More noise, and the valuable cases get lost.",
+ insight:"The better question isn't “does this look suspicious?” It's “does this deserve action?”",
  slides:[
- {k:"THE OPPORTUNITY",h:"A stronger story than “AI that finds suspicious claims.”",p:["The old question: does this claim look suspicious? Probability, anomaly, score.","The better question: does this claim actually deserve action? Evidence, rules, policy, determination."],img:"/work/claimqi/s2-02.jpg"},
- {k:"THE PROBLEM",h:"Payer teams are drowning in data, not insight.",p:["More claims. More flags. More noise. AI can find what looks suspicious, but that isn't the same as knowing what is worth your team's time."],img:"/work/claimqi/s3-03.jpg"},
- {k:"THE STAKES",h:"The cost of the wrong decision is bigger than the cost of the missed flag.",p:["It's not just about finding more. It's about deciding with confidence."],img:"/work/claimqi/s4-04.jpg"},
- {k:"FILM 01 · PRECISION",h:"The Right Target.",p:["In a world of signals, ClaimQI knows when the evidence is strong enough to act.","The contest, the calm, the shot, the result. Signal → evidence → decision."],img:"/work/claimqi/s6-06.jpg"},
- {k:"FILM 02 · JUDGMENT",h:"False Alarm.",p:["Know when not to act. The smartest system isn't the one that reacts fastest. It's the one that knows when not to act.","The sound, the panic, the scan, the reveal."],img:"/work/claimqi/s7-07.jpg"},
- {k:"FILM 03 · CONTEXT",h:"Upon request.",p:["Some stories are worth waiting for. A teaser built on withheld context."],img:"/work/claimqi/s8-08.jpg"},
- {k:"THE SYSTEM",h:"Three films. One product story.",list:["Prevent: find where to look","Core: know what's actually wrong","Insights: see the bigger picture"],img:"/work/claimqi/s9-09.jpg"},
- {k:"THE CONTENT SYSTEM",h:"One story. Every channel.",p:["3 hero films → cutdowns → multi-format → distribution on LinkedIn, YouTube and Meta, plus executive content, industry media and expert collaborations."],img:"/work/claimqi/s10-10.jpg"},
- {k:"THE OUTCOME",h:"More than content. A stronger business position.",list:["Clearer position","Faster buyer understanding","Stronger sales alignment","Higher memorability","More qualified conversations","More pipeline opportunity"],img:"/work/claimqi/s11-11.jpg"}
+ {k:"THE OPPORTUNITY",h:"A stronger story than “AI that finds suspicious claims.”",p:["The old question is about probability and anomaly. The better one is about evidence, rules, policy and determination."],img:Q+"art-cover.jpg"},
+ {k:"THE STAKES",h:"The wrong decision costs more than the missed flag.",p:["It isn't about finding more. It's about deciding with confidence."],img:Q+"art-stakes.jpg"},
+ {k:"FILM 01 · PRECISION",h:"The right target.",p:["In a world of signals, ClaimQI knows when the evidence is strong enough to act.","Signal. Evidence. Decision."],img:Q+"art-film1.jpg",frames:[[Q+"frames/f1-1.jpg","The contest"],[Q+"frames/f1-2.jpg","The calm"],[Q+"frames/f1-3.jpg","The shot"],[Q+"frames/f1-4.jpg","The result"]],cols:4},
+ {k:"FILM 02 · JUDGMENT",h:"False alarm.",p:["The smartest system isn't the one that reacts fastest. It's the one that knows when not to act."],img:Q+"art-film2.jpg",frames:[[Q+"frames/f2-1.jpg","The sound"],[Q+"frames/f2-2.jpg","The panic"],[Q+"frames/f2-3.jpg","The scan"],[Q+"frames/f2-4.jpg","The reveal"]],cols:4},
+ {k:"FILM 03 · CONTEXT",h:"Upon request.",p:["The third film is a teaser built on withheld context."],big:["Some stories","are worth","waiting for."]},
+ {k:"THE SYSTEM",h:"Three films. One product story.",list:["Prevent: find where to look","Core: know what's actually wrong","Insights: see the bigger picture"],img:Q+"art-three.jpg"},
+ {k:"THE CONTENT SYSTEM",h:"One story, built to travel.",p:["LinkedIn, YouTube and Meta, plus executive content, industry media and expert collaborations."],big:["3 hero films","Cutdowns","Every format","Every channel"]},
+ {k:"THE OUTCOME",h:"More than content. A stronger position.",list:["Clearer position","Faster buyer understanding","Stronger sales alignment","Higher memorability","More qualified conversations","More pipeline opportunity"],img:Q+"art-end.jpg"}
  ]},
 /* 3 — ATORIE */
 {brand:"Atorie",cat:"FASHION",title:"good enough.",idea:"The product is good enough. So is the person.",role:ROLE,
- brief:"Atorie offers high-quality fashion with lower markups. Left at “luxury quality for less,” it can still feel like the cheaper alternative.",
- insight:"People want to feel confident about the choice, and already enough. Fashion and social pressure keep saying the opposite.",
+ brief:"Atorie sells quality fashion at lower markups. Said as “luxury for less,” it still sounds like the cheaper option.",
+ insight:"I think people want more than value. They want to feel confident in the choice, and already enough.",
  slides:[
- {k:"THE THINKING",h:"Where this started.",p:["Good materials, good manufacturing, a price below traditional luxury. But “luxury quality for less” can still feel like the cheaper alternative to the thing someone really wanted.","The product is good enough. The quality is genuinely there. The person is already good enough. They do not need a more expensive object to prove anything."],big:["be more.","show more.","prove more.","buy more.","good enough."]},
- {k:"HERO FILM",h:"She keeps walking.",p:["A woman walks through changing places. Voices follow her: “Could be better.” “You should…” “Not enough.” She never stops, explains herself or tries to prove anything.","Crash zoom to the good enough. bag. The voices cut. Silence. A woman says, “Atta girl.” She smiles slightly and keeps walking out of frame."],img:"/work/atorie/hero.jpg",cap:"Storyboard: concept visual direction."},
- {k:"PRODUCT FILM",h:"Show the quality.",p:["A question. Then the evidence. “What about the fabric?” A macro shot. “What about the stitching?” The seam. Construction, finish, manufacturing, each cutting to the real product.","We don't answer every question with “good enough.” That could sound like “just okay.” Quality first. Only at the end: good enough."],img:"/work/atorie/product.jpg",cap:"Final product proof would use Atorie's actual materials and manufacturing."},
- {k:"THE BAG + REACTION LANGUAGE",h:"Something people can carry. Something people can say.",p:["The campaign bag: oversized, brown leather, slouchy, relaxed, premium, with large beige good enough. lettering and soft liquid edges. A real object people could want to carry for what it says.","The reaction language: the woman and the bag as a GIF, stickers, story replies, animated lettering, meme formats. Someone posts something. The reply is: good enough."],img:"/work/atorie/bag.jpg"},
- {k:"PRE-LAUNCH · FIRST APPEARANCES",h:"GUDINAF should come first.",p:["Before the hero film. Before the main campaign. Almost no explanation.","A billboard. A poster. A sticker. A bag. A small social post. Only GUDINAF. It sounds like a word, a name or a code. We don't explain it yet."],img:"/work/atorie/gudinaf.jpg",cap:"Concept storyboard, including illustrative social posts."},
- {k:"PRE-LAUNCH · SPECULATION",h:"“What is GUDINAF?”",p:["“Is it German?” “A person?” “A new brand?” People guess, search and talk. Their own theories are part of the idea.","Atorie can watch whether the word creates curiosity before committing to the main drop."],img:"/work/atorie/speculation.jpg",cap:"Illustrative X collage. Posts and engagement are concept mockups, not actual public reaction."},
- {k:"PRE-LAUNCH · PRESS MOMENT",h:"A question. A flash. A wink.",p:["Evening, outside a company building. Executives come down the steps. A reporter holds out a microphone. Camera flashes. One woman just winks.","No explanation. She keeps moving. The answer comes later, with the campaign."],img:"/work/atorie/press.jpg",cap:"AI concept image of a proposed scene, not a real press event."},
- {k:"THE REVEAL",h:"Then, BAM. GUDINAF = good enough.",list:["01 Seed the mystery. Small GUDINAF sightings, almost no explanation.","02 Watch the response. Speculation, searches and conversation. The press moment if interest develops.","03 Reveal and drop. The hero film, product film, bag, GIFs, stickers and memes."],p:["“Oh. That is what it was.” Real response decides how far to take it."],big:["GUDINAF","=","good enough."]},
- {k:"AFTER THE REVEAL",h:"Are people still using it?",p:["Keep good enough. and GUDINAF in circulation through memes, GIFs and replies, so people can use them in their own situations.","Watch repeat use, new reactions and return visits. Keep what people use. If it feels played out, move on."],img:"/work/atorie/memes.jpg",cap:"Illustrative meme collage. Not measured results. Proposal by Can Öncül, not commissioned or endorsed by Atorie."}
+ {k:"THE THINKING",h:"Everyone says: be more.",p:["Fashion and social pressure keep pushing the same message. I went the other way.","The product is good enough. The person already is too."],big:["be more.","show more.","prove more.","buy more.","good enough."]},
+ {k:"HERO FILM",h:"She keeps walking.",p:["Voices follow her through changing places: “Could be better.” “You should…” She never stops, never proves anything.","Crash zoom to the bag. Silence. “Atta girl.”"],frames:[[A+"hero-1.jpg","She walks"],[A+"hero-2.jpg","The voices"],[A+"hero-3.jpg","Different places"],[A+"hero-4.jpg","The bag"],[A+"hero-5.jpg","The turn"],[A+"hero-6.jpg","She keeps going"]],cols:3,ar:"1/1"},
+ {k:"PRODUCT FILM",h:"Show the quality.",p:["A question, then proof. Fabric, seam, construction, finish. “Good enough” only arrives at the end, so it never sounds like “just okay.”"],cap:"Final proof would use Atorie's real materials and manufacturing.",frames:[[A+"prod-1.jpg","The question"],[A+"prod-2.jpg","The fabric"],[A+"prod-3.jpg","The stitching"],[A+"prod-4.jpg","The manufacturing"],[A+"prod-5.jpg","The construction"],[A+"prod-6.jpg","The finish"],[A+"prod-7.jpg","The details"],[A+"prod-8.jpg","The result"],[A+"prod-9.jpg","The message"]],cols:3,ar:"3/2"},
+ {k:"THE BAG + REACTION LANGUAGE",h:"Something people can carry. Something people can say.",p:["An oversized brown leather bag with good enough. across it, and a reaction language: GIFs, stickers, replies.","Someone posts something. The reply is: good enough."],img:"/work/atorie/bag.jpg"},
+ {k:"PRE-LAUNCH · FIRST APPEARANCES",h:"GUDINAF comes first.",p:["Before the hero film, no explanation. A billboard, a poster, a sticker, a bag. One word.","People start asking."],cap:"Concept storyboard.",frames:[[A+"gud-1.jpg","The billboard"],[A+"gud-2.jpg","The poster"],[A+"gud-3.jpg","The sticker"],[A+"gud-4.jpg","The bag"]],cols:4,ar:"328/413"},
+ {k:"PRE-LAUNCH · SPECULATION",h:"“What is GUDINAF?”",p:["Is it German? A person? A new brand? People guess, search and talk. Their theories are part of the idea.","Atorie can watch the curiosity before committing to the drop."],cap:"Illustrative collage. Posts and engagement are concept mockups, not real reactions.",img:"/work/atorie/speculation.jpg"},
+ {k:"PRE-LAUNCH · PRESS MOMENT",h:"A question. A flash. A wink.",p:["If the curiosity reaches the press: executives leave a building, a microphone, flashes, and one woman just winks.","No explanation. The answer comes later."],cap:"AI concept image of a proposed scene.",img:"/work/atorie/press.jpg"},
+ {k:"THE REVEAL",h:"Then, BAM.",p:["“Oh. That is what it was.”"],list:["01 Seed the mystery","02 Watch the response","03 Reveal and drop: film, bag, GIFs, stickers, memes"],big:["GUDINAF","=","good enough."]},
+ {k:"AFTER THE REVEAL",h:"Are people still using it?",p:["I'd keep the words in circulation through memes, GIFs and replies, and watch what people actually keep using. If it feels played out, move on."],cap:"Illustrative collage, not measured results. Proposal by Can Öncül, not commissioned or endorsed by Atorie.",img:"/work/atorie/memes.jpg"}
  ]},
 /* 4 — DOLCE GLOW */
 {brand:"Dolce Glow",cat:"BEAUTY",title:"Two ways to tell the glow.",idea:"Make the glow precious. Then make room for life.",role:"Concept, treatment, visual direction",
  brief:"Blush Me is a self-tanning blush whose colour develops over time. How do you show a glow that stays?",
- insight:"Wanting to feel good in your skin, while checking it, pulls you out of the moment.",
+ insight:"Feeling good in your skin and checking it all day don't go together.",
  slides:[
- {k:"THE STARTING POINT",h:"Product. People. Place.",p:["A glow that stays: Blush Me's colour develops over time, a natural-looking blush tan that lasts beyond makeup.","A moment to enjoy: the tension between feeling good in your skin and checking your appearance.","An Italian world: the founder's Italian roots and the Amalfi Coast give the films a place, a warmth and pleasure."],img:"/work/dolce/cover.jpg"},
- {k:"FILM 01 · JEWELER / GOLD",h:"What if glow were the jewel?",p:["Put Blush Me somewhere unexpected: an Amalfi jeweller. Silver, gold, then diamond. Each presentation builds anticipation.","The final box opens. We see her reaction before we see Blush Me. She leaves it on display, preserving the ritual.","Desire, anticipation and quiet delight."],img:"/work/dolce/jeweler.jpg",cap:"Visual direction studies."},
- {k:"FILM 01 · STORYBOARD",h:"Silver. Gold. Diamond. Reaction. Blush Me.",p:["A familiar luxury ritual creates an unexpected ending. The product earns the last reveal."],img:"/work/dolce/jeweler-board.jpg"},
- {k:"FILM 02 · TAKE IT AND ENJOY IT",h:"Less checking. More living.",p:["One woman is present in her day. Another keeps interrupting hers to check her makeup. Morning, midday and dinner play in split screen.","The frame opens into a shared bathroom: strangers in the same restaurant. A visible handoff gives the line its meaning: “Take it and enjoy it.”","Relief, generosity and connection."],img:"/work/dolce/takeit.jpg",cap:"Visual direction studies."},
- {k:"FILM 02 · STORYBOARD",h:"Morning. Midday. Dinner. The handoff.",p:["The visual contrast is easy to follow. The shared space and a small act of kindness give it a human ending. The handoff expresses relief, not an instant tanning effect."],img:"/work/dolce/takeit-board.jpg"},
- {k:"FROM BOARDS TO FILM",h:"A clear first week.",list:["Shape: lock one direction, dialogue and timing","Visualise: use AI to explore casting, light, locations and shot continuity","Refine: review pacing and product visibility. Deliver a visual plan and rough animatic"],p:["Approximately one week for a selected direction. A final production budget follows the agreed scope."]}
+ {k:"THE STARTING POINT",h:"Where the idea begins.",p:["A glow that stays. A moment to enjoy. An Italian world, from the founder's roots and the Amalfi coast."],big:["Product.","People.","Place."]},
+ {k:"FILM 01 · JEWELER / GOLD",h:"What if glow were the jewel?",p:["I put Blush Me in an Amalfi jeweller. Silver, gold, diamond, and each reveal builds anticipation.","We see her face before we see the product. She leaves it on display, like a ritual."],cap:"Visual direction studies.",frames:[[D+"jw-1.jpg","The coast"],[D+"jw-2.jpg","The jeweller"],[D+"jw-3.jpg","The guest"],[D+"jw-4.jpg","The velvet"],[D+"jw-5.jpg","The reveal"],[D+"jw-6.jpg","The detail"]],cols:3,ar:"1/1"},
+ {k:"FILM 01 · STORYBOARD",h:"Silver. Gold. Diamond.",p:["A familiar luxury ritual, an unexpected ending. The product earns the last reveal."],img:"/work/dolce/jeweler-board.jpg"},
+ {k:"FILM 02 · TAKE IT AND ENJOY IT",h:"Less checking. More living.",p:["One woman lives her day. Another keeps checking her makeup. Split screen: morning, midday, dinner.","Then a shared bathroom, two strangers, one small handoff: “Take it and enjoy it.”"],cap:"Visual direction studies.",frames:[[D+"tk-1.jpg","Morning"],[D+"tk-2.jpg","Midday"],[D+"tk-3.jpg","Dinner"],[D+"tk-4.jpg","The shared mirror"],[D+"tk-5.jpg","The handoff"],[D+"tk-6.jpg","Back to the table"]],cols:3,ar:"1/1"},
+ {k:"FILM 02 · STORYBOARD",h:"Relief, generosity, connection.",p:["The handoff shows relief, not an instant tan. The product takes 12 hours to develop."],img:"/work/dolce/takeit-board.jpg"},
+ {k:"FROM BOARDS TO FILM",h:"A clear first week.",p:["About a week for a chosen direction. AI cuts the cost of early exploration. A production budget follows the agreed scope."],scenes:[["Shape","Lock one direction, dialogue and timing."],["Visualise","Use AI to explore casting, light, locations and continuity."],["Refine","Review pacing and product visibility. Deliver a visual plan and rough animatic."]]}
  ]}
 ];
+var fl=document.createElement('link');fl.rel='stylesheet';fl.href='https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap';document.head.appendChild(fl);
+var G="#e3b982",LN="rgba(255,255,255,.14)";
 var css=document.createElement('style');
 css.textContent=
-".cc-ov{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.76);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px;font-family:'Inter Tight',system-ui,sans-serif;color:#f4f5f7}"+
+".cc-ov{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:18px;font-family:'Inter Tight',system-ui,sans-serif;color:#f4f5f7}"+
 ".cc-ov.on{display:flex}"+
-".cc-pn{width:min(1240px,100%);height:min(86vh,780px);background:linear-gradient(160deg,rgba(18,30,44,.97),rgba(7,11,16,.97));border:1px solid rgba(160,200,235,.22);border-radius:18px;box-shadow:0 0 0 1px rgba(127,212,255,.08),0 30px 120px rgba(40,140,255,.2);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}"+
-".cc-hd{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(160,200,235,.16);font-size:12px;letter-spacing:.16em;color:#7fd4ff;gap:12px}"+
-".cc-hd b{color:#f4f5f7;font-weight:700;letter-spacing:.1em}"+
-".cc-x{background:none;border:1px solid rgba(160,200,235,.3);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;flex:none}"+
-".cc-bd{display:grid;grid-template-columns:1.25fr 1fr;min-height:0}"+
-".cc-md{position:relative;overflow:hidden;background:#05080c;border-right:1px solid rgba(160,200,235,.16);display:flex;align-items:center;justify-content:center;min-height:0}"+
-".cc-md .bg{position:absolute;inset:-20px;background-size:cover;background-position:center;filter:blur(28px) brightness(.45);transform:scale(1.1)}"+
-".cc-md img{position:relative;max-width:100%;max-height:100%;object-fit:contain;display:block}"+
-".cc-md.cover img{width:100%;height:100%;object-fit:cover}"+
-".cc-big{position:relative;padding:40px;font-size:clamp(34px,4.4vw,68px);font-weight:800;letter-spacing:-.03em;line-height:1}"+
-".cc-big span{display:block}.cc-big span:nth-child(even){color:#7fd4ff}"+
-".cc-cap{position:absolute;left:16px;right:16px;bottom:12px;font-size:11px;line-height:1.4;color:#c5ccd3;text-shadow:0 1px 8px #000}"+
-".cc-tx{padding:30px 32px;overflow:auto;overscroll-behavior:contain;min-height:0}"+
-".cc-k{font-size:11px;letter-spacing:.2em;color:#7fd4ff;margin-bottom:12px}"+
-".cc-tx h2{margin:0 0 16px;font-size:clamp(26px,2.8vw,40px);font-weight:800;letter-spacing:-.02em;line-height:1.06}"+
-".cc-tx p{margin:0 0 12px;font-size:16px;line-height:1.55;color:#d9dee3}"+
-".cc-tx ul{margin:6px 0 12px;padding:0;list-style:none}"+
-".cc-tx li{font-size:15.5px;line-height:1.5;color:#d9dee3;padding:10px 0;border-top:1px solid rgba(160,200,235,.16)}"+
+".cc-pn{width:min(1280px,100%);height:min(88vh,800px);background:linear-gradient(160deg,rgba(16,17,20,.97),rgba(5,5,6,.98));border:1px solid "+LN+";border-radius:14px;box-shadow:0 0 0 1px rgba(227,185,130,.06),0 30px 120px rgba(227,185,130,.07);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}"+
+".cc-hd{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid "+LN+";font-size:11.5px;letter-spacing:.22em;color:#9aa0a6;gap:12px}"+
+".cc-hd b{color:#fff;font-weight:600;letter-spacing:.2em}.cc-hd i{font-style:normal;color:"+G+"}"+
+".cc-x{background:none;border:1px solid "+LN+";color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;flex:none}"+
+".cc-bd{display:grid;grid-template-columns:1.3fr 1fr;min-height:0}"+
+".cc-md{position:relative;overflow:hidden;background:#050505;border-right:1px solid "+LN+";min-height:0;display:flex}"+
+".cc-md .bg{position:absolute;inset:-30px;background-size:cover;background-position:center;filter:blur(34px) brightness(.32) saturate(.8);transform:scale(1.1)}"+
+".cc-pd{position:relative;flex:1;padding:24px;display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}"+
+".cc-im{flex:1;min-height:0;border:1px solid "+LN+";border-radius:4px;background-size:contain;background-position:center;background-repeat:no-repeat;background-color:rgba(0,0,0,.35)}"+
+".cc-md.cover .cc-im{background-size:cover;border:0;border-radius:0}.cc-md.cover .cc-pd{padding:0}"+
+".cc-fg{display:grid;gap:6px;min-height:0}"+
+".cc-fg.solo{flex:1;align-content:center}.cc-fg.solo .cc-f{aspect-ratio:var(--ar,1/1)}.cc-fg.row{height:30%;flex:none}"+
+".cc-f{position:relative;border:1px solid "+LN+";border-radius:3px;overflow:hidden;background:#000;min-height:0}"+
+".cc-f img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.92) contrast(1.04)}"+
+".cc-f:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.78))}"+
+".cc-f span{position:absolute;z-index:1;left:9px;bottom:7px;right:6px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}"+
+".cc-f span em{font-style:normal;color:"+G+";margin-right:6px}"+
+".cc-big{position:relative;padding:44px;display:flex;flex-direction:column;justify-content:center;flex:1;font-size:clamp(30px,4vw,62px);font-weight:700;letter-spacing:.015em;line-height:1.02;text-transform:uppercase}"+
+".cc-big span{display:block;color:rgba(255,255,255,.42)}.cc-big span:last-child{color:#fff}"+
+".cc-sc{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1;min-height:0}.cc-sc.three{grid-template-columns:1fr}"+
+".cc-s{border:1px solid "+LN+";border-radius:3px;padding:18px;background:rgba(255,255,255,.02);display:flex;flex-direction:column;gap:8px;min-height:0;overflow:hidden}"+
+".cc-s em{font-style:normal;color:"+G+";font-size:12px;letter-spacing:.2em}"+
+".cc-s b{font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}"+
+".cc-s p{margin:0;font-size:14.5px;line-height:1.5;color:#c9cdd2}"+
+".cc-st{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:1}"+
+".cc-st div{border:1px solid "+LN+";border-radius:3px;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:8px;background:rgba(255,255,255,.02)}"+
+".cc-st b{font-size:clamp(32px,3.6vw,54px);font-weight:700;color:"+G+";letter-spacing:-.01em}"+
+".cc-st span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9aa0a6}"+
+".cc-tx{padding:30px 34px;overflow:auto;overscroll-behavior:contain;min-height:0;position:relative}"+
+".cc-num{position:sticky;top:100%;text-align:right;font-size:clamp(90px,11vw,170px);font-weight:700;line-height:.8;letter-spacing:-.04em;color:rgba(255,255,255,.045);pointer-events:none;margin-top:30px;user-select:none}"+
+".cc-k{font-size:11px;letter-spacing:.24em;color:"+G+";margin-bottom:14px}"+
+".cc-tx h2{margin:0 0 18px;font-size:clamp(24px,2.5vw,36px);font-weight:700;letter-spacing:.02em;line-height:1.1;text-transform:uppercase}"+
+".cc-tx p{margin:0 0 13px;font-size:16.5px;line-height:1.55;color:#d3d7dc}"+
+".cc-tx ul{margin:8px 0 12px;padding:0;list-style:none}"+
+".cc-tx li{font-size:15.5px;line-height:1.45;color:#d3d7dc;padding:10px 0;border-top:1px solid "+LN+"}"+
 ".cc-tx li:first-child{border-top:0}"+
-".cc-note{margin-top:14px;font-size:12px;line-height:1.45;color:#8a94a0}"+
-".cc-id{font-size:19px;font-weight:700;margin:12px 0 4px}"+
-".cc-lb{font-size:10.5px;letter-spacing:.18em;color:#97a0aa;margin:14px 0 5px}"+
-".cc-mt{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid rgba(160,200,235,.16);margin-top:16px;padding-top:12px}"+
-".cc-mt b{display:block;font-size:10px;letter-spacing:.16em;color:#97a0aa;font-weight:500;margin-bottom:3px}.cc-mt span{font-size:13.5px}"+
-".cc-ft{display:flex;align-items:center;gap:14px;padding:12px 22px;border-top:1px solid rgba(160,200,235,.16)}"+
-".cc-ar{background:none;border:1px solid rgba(160,200,235,.3);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:16px;flex:none}"+
-".cc-ar:disabled{opacity:.3;cursor:default}"+
+".cc-note{margin-top:16px;font-size:12px;line-height:1.5;color:#7c838b;border-top:1px solid "+LN+";padding-top:10px}"+
+".cc-sc2{font-family:'Mrs Saint Delafield','Segoe Script',cursive;font-size:44px;line-height:1;color:"+G+";margin:2px 0 18px}"+
+".cc-lb{font-size:10.5px;letter-spacing:.22em;color:#8b9299;margin:16px 0 6px}"+
+".cc-mt{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid "+LN+";margin-top:18px;padding-top:12px}"+
+".cc-mt b{display:block;font-size:10px;letter-spacing:.18em;color:#8b9299;font-weight:500;margin-bottom:3px}.cc-mt span{font-size:13.5px}"+
+".cc-ft{display:flex;align-items:center;gap:14px;padding:12px 24px;border-top:1px solid "+LN+"}"+
+".cc-ar{background:none;border:1px solid "+LN+";color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:15px;flex:none}"+
+".cc-ar:disabled{opacity:.25;cursor:default}"+
 ".cc-dots{display:flex;gap:6px;flex:1;align-items:center;overflow:hidden}"+
-".cc-dots i{height:4px;flex:1;max-width:46px;border-radius:2px;background:rgba(160,200,235,.25);cursor:pointer;transition:.25s}"+
-".cc-dots i.on{background:#7fd4ff}"+
-".cc-ct{font-size:12px;letter-spacing:.14em;color:#97a0aa;flex:none}"+
-".cc-bt{border:1px solid #f4f5f7;background:#f4f5f7;color:#000;padding:10px 16px;font:600 11.5px 'Inter Tight',sans-serif;letter-spacing:.14em;border-radius:3px;text-decoration:none;flex:none;white-space:nowrap}"+
-"@media(max-width:860px){.cc-ov{padding:0}.cc-pn{height:100%;max-height:none;border-radius:0;border:0}.cc-bd{grid-template-columns:1fr;grid-template-rows:38% 1fr}.cc-md{border-right:0;border-bottom:1px solid rgba(160,200,235,.16)}.cc-big{padding:18px;font-size:clamp(26px,9vw,44px)}.cc-tx{padding:20px 20px}.cc-bt{display:none}.cc-hd{padding:12px 16px}.cc-ft{padding:10px 16px}}";
+".cc-dots i{height:3px;flex:1;max-width:46px;border-radius:2px;background:rgba(255,255,255,.16);cursor:pointer;transition:.25s}"+
+".cc-dots i.on{background:"+G+"}"+
+".cc-ct{font-size:11.5px;letter-spacing:.18em;color:#8b9299;flex:none}"+
+".cc-bt{border:1px solid #fff;color:#fff;background:none;padding:10px 16px;font:600 11px 'Inter Tight',sans-serif;letter-spacing:.18em;border-radius:2px;text-decoration:none;flex:none;white-space:nowrap}"+
+"@media(max-width:860px){.cc-ov{padding:0}.cc-pn{height:100%;max-height:none;border-radius:0;border:0}.cc-bd{grid-template-columns:1fr;grid-template-rows:42% 1fr}.cc-md{border-right:0;border-bottom:1px solid "+LN+"}.cc-pd{padding:12px}.cc-big{padding:20px;font-size:clamp(24px,8vw,40px)}.cc-tx{padding:20px}.cc-bt{display:none}.cc-hd{padding:12px 16px}.cc-ft{padding:10px 16px}.cc-s{padding:10px}.cc-s p{font-size:12.5px}.cc-st div{padding:10px}.cc-f span{font-size:8.5px;left:6px}.cc-sc2{font-size:36px}}";
 document.head.appendChild(css);
 var ov=document.createElement('div');ov.className='cc-ov';
 ov.innerHTML='<div class="cc-pn" role="dialog" aria-modal="true"></div>';
 document.body.appendChild(ov);
 var pn=ov.firstChild,cur=0,idx=0;
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-function all(c,i){
- var o={overview:true,k:"OVERVIEW",h:c.brand,idea:c.idea,brief:c.brief,insight:c.insight,role:c.role,img:"/plates/case-card"+(i+1)+".jpg",cover:true,title:c.title};
- return [o].concat(c.slides);
+function all(c,i){return [{overview:true,k:"OVERVIEW",img:"/plates/case-card"+(i+1)+".jpg",cover:true}].concat(c.slides)}
+function media(s,c,i){
+ var bgimg=s.cover?s.img:"/plates/case-card"+(i+1)+".jpg",h='<div class="cc-md'+(s.cover?' cover':'')+'"><div class="bg" style="background-image:url('+bgimg+')"></div><div class="cc-pd">';
+ if(s.cover)h+='<div class="cc-im" style="background-image:url('+s.img+')"></div>';
+ else if(s.frames){
+  if(s.img)h+='<div class="cc-im" style="background-image:url('+s.img+')"></div>';
+  h+='<div class="cc-fg '+(s.img?'row':'solo')+'" style="grid-template-columns:repeat('+(s.cols||3)+',1fr);--ar:'+(s.ar||'1/1')+'">'+s.frames.map(function(f,n){return '<div class="cc-f"><img src="'+f[0]+'" alt=""><span><em>'+String(n+1).padStart(2,'0')+'</em>'+esc(f[1])+'</span></div>'}).join('')+'</div>';
+ }
+ else if(s.img)h+='<div class="cc-im" style="background-image:url('+s.img+')"></div>';
+ else if(s.scenes)h+='<div class="cc-sc'+(s.scenes.length===3?' three':'')+'">'+s.scenes.map(function(x,n){return '<div class="cc-s"><em>'+String(n+1).padStart(2,'0')+'</em><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p></div>'}).join('')+'</div>';
+ else if(s.stats)h+='<div class="cc-st">'+s.stats.map(function(x){return '<div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div>'}).join('')+'</div>';
+ else if(s.big)h+='<div class="cc-big">'+s.big.map(function(b){return '<span>'+esc(b)+'</span>'}).join('')+'</div>';
+ return h+'</div></div>';
 }
 function render(){
- var c=CASES[cur],S=all(c,cur),s=S[idx],n=S.length;
- var media='';
- if(s.img){media='<div class="cc-md'+(s.cover?' cover':'')+'"><div class="bg" style="background-image:url('+s.img+')"></div><img src="'+s.img+'" alt="">'+'</div>'}
- else if(s.big){media='<div class="cc-md"><div class="bg" style="background-image:url(/plates/case-card'+(cur+1)+'.jpg)"></div><div class="cc-big">'+s.big.map(function(b){return '<span>'+esc(b)+'</span>'}).join('')+'</div></div>'}
- else{media='<div class="cc-md"><div class="bg" style="background-image:url(/plates/case-card'+(cur+1)+'.jpg)"></div><div class="cc-big"><span>'+esc(c.title)+'</span></div></div>'}
- var tx='<div class="cc-k">'+esc(s.k)+'</div>';
+ var c=CASES[cur],S=all(c,cur),s=S[idx],n=S.length,tx='<div class="cc-k">'+esc(s.k)+'</div>';
  if(s.overview){
-  tx+='<h2>'+esc(c.brand)+'</h2><div class="cc-id" style="color:#7fd4ff;font-size:20px;margin-top:0">'+esc(c.title)+'</div>'+
-  '<div class="cc-lb">THE BRIEF</div><p>'+esc(c.brief)+'</p><div class="cc-lb">THE INSIGHT</div><p>'+esc(c.insight)+'</p><div class="cc-lb">THE IDEA</div><div class="cc-id" style="margin-top:0">'+esc(c.idea)+'</div>'+
+  tx+='<h2>'+esc(c.brand)+'</h2><div class="cc-sc2">'+esc(c.idea)+'</div>'+
+  '<div class="cc-lb">THE BRIEF</div><p>'+esc(c.brief)+'</p><div class="cc-lb">THE INSIGHT</div><p>'+esc(c.insight)+'</p>'+
   '<div class="cc-mt"><div><b>ROLE</b><span>'+esc(c.role)+'</span></div><div><b>TYPE</b><span>Creative proposal · 2026</span></div></div>';
  }else{
   tx+='<h2>'+esc(s.h)+'</h2>'+(s.p||[]).map(function(t){return '<p>'+esc(t)+'</p>'}).join('')+(s.list?'<ul>'+s.list.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul>':'');
   if(s.cap)tx+='<div class="cc-note">'+esc(s.cap)+'</div>';
  }
  var dots='';for(var d=0;d<n;d++)dots+='<i class="'+(d===idx?'on':'')+'" data-i="'+d+'"></i>';
- pn.innerHTML='<div class="cc-hd"><span>'+String(cur+1).padStart(2,'0')+' / '+esc(c.cat)+' · <b>'+esc(c.brand.toUpperCase())+'</b></span><button class="cc-x" aria-label="Close">✕</button></div>'+
- '<div class="cc-bd">'+media+'<div class="cc-tx">'+tx+'</div></div>'+
- '<div class="cc-ft"><button class="cc-ar" id="ccp" aria-label="Previous"'+(idx===0?' disabled':'')+'>←</button><div class="cc-dots">'+dots+'</div><span class="cc-ct">'+(idx+1)+' / '+n+'</span><button class="cc-ar" id="ccn" aria-label="Next"'+(idx===n-1?' disabled':'')+'>→</button><a class="cc-bt" href="mailto:cnoncl.studio@gmail.com">START A CONVERSATION</a></div>';
+ pn.innerHTML='<div class="cc-hd"><span><i>'+String(cur+1).padStart(2,'0')+'</i> &nbsp;/&nbsp; '+esc(c.cat)+' &nbsp;·&nbsp; <b>'+esc(c.brand.toUpperCase())+'</b></span><button class="cc-x" aria-label="Close">✕</button></div>'+
+ '<div class="cc-bd">'+media(s,c,cur)+'<div class="cc-tx">'+tx+'<div class="cc-num">'+String(idx+1).padStart(2,'0')+'</div></div></div>'+
+ '<div class="cc-ft"><button class="cc-ar" id="ccp" aria-label="Previous"'+(idx===0?' disabled':'')+'>←</button><div class="cc-dots">'+dots+'</div><span class="cc-ct">'+String(idx+1).padStart(2,'0')+' / '+String(n).padStart(2,'0')+'</span><button class="cc-ar" id="ccn" aria-label="Next"'+(idx===n-1?' disabled':'')+'>→</button><a class="cc-bt" href="mailto:cnoncl.studio@gmail.com">START A CONVERSATION</a></div>';
  pn.querySelector('.cc-x').onclick=close;
  pn.querySelector('#ccp').onclick=function(){go(idx-1)};pn.querySelector('#ccn').onclick=function(){go(idx+1)};
  [].forEach.call(pn.querySelectorAll('.cc-dots i'),function(e){e.onclick=function(){go(+e.getAttribute('data-i'))}});
- var nx=S[idx+1];if(nx&&nx.img){var im=new Image();im.src=nx.img}
+ var nx=S[idx+1];if(nx){[nx.img].concat((nx.frames||[]).map(function(f){return f[0]})).forEach(function(u){if(u){var im=new Image();im.src=u}})}
 }
 function go(i){var n=all(CASES[cur],cur).length;if(i<0||i>=n)return;idx=i;render()}
 window.openCase=function(i){if(!CASES[i])return;cur=i;idx=0;render();ov.classList.add('on')};
