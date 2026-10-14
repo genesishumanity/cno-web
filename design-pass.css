@@ -1,2 +1,10 @@
 /* design-pass-1: case cards are full-bleed photos floating on the scene (no black panel). Remove the <link> in index.html to revert. */
 .lcard{-webkit-mask-image:linear-gradient(180deg,#000 88%,transparent);mask-image:linear-gradient(180deg,#000 88%,transparent)}
+
+/* UGC cards turn toward the creator at the desk (bottom left). Farther cards turn more. Delete this block to revert. */
+.card3d .lcard,.card3d .ug-pv{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.ov>.card3d:nth-child(5) .lcard,.ov>.card3d:nth-child(5) .ug-pv{transform:perspective(1100px) rotateY(16deg) rotateX(-3deg)}
+.ov>.card3d:nth-child(6) .lcard,.ov>.card3d:nth-child(6) .ug-pv{transform:perspective(1100px) rotateY(22deg) rotateX(-3deg)}
+.ov>.card3d:nth-child(7) .lcard,.ov>.card3d:nth-child(7) .ug-pv{transform:perspective(1100px) rotateY(28deg) rotateX(-3deg)}
+.ov>.card3d:nth-child(8) .lcard,.ov>.card3d:nth-child(8) .ug-pv{transform:perspective(1100px) rotateY(34deg) rotateX(-3deg)}
+.ov>.card3d:has(.lcard:hover) .lcard,.ov>.card3d:has(.lcard:hover) .ug-pv{transform:perspective(1100px) rotateY(8deg) rotateX(-2deg)}
