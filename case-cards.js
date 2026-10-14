@@ -200,8 +200,11 @@ function render(){
 }
 function go(i){var n=all(CASES[cur],cur).length;if(i<0||i>=n)return;idx=i;render()}
 function preload(i){all(CASES[i],i).forEach(function(x){[x.img,x.bg].concat((x.frames||[]).map(function(f){return f[0]})).forEach(function(u){if(u){var im=new Image();im.src=u}})})}
-window.openCase=function(i){if(!CASES[i])return;cur=i;idx=0;render();ov.classList.add('on');preload(i)};
-function close(){ov.classList.remove('on')}
+var SL=['vw','saffron','claimqi','atorie','dolce'];
+window.openCase=function(i){if(!CASES[i])return;cur=i;idx=0;render();ov.classList.add('on');preload(i);try{history.replaceState(null,'','#case-'+SL[i])}catch(e){}};
+function close(){ov.classList.remove('on');try{if(/^#case-/.test(location.hash))history.replaceState(null,'',location.pathname+location.search)}catch(e){}}
+function fromHash(){var m=/^#case-(\w+)/.exec(location.hash),i=m?SL.indexOf(m[1]):-1;if(i>=0)window.openCase(i)}
+fromHash();addEventListener('hashchange',fromHash);
 ov.addEventListener('click',function(e){if(e.target===ov)close()});
 addEventListener('keydown',function(e){if(!ov.classList.contains('on'))return;if(e.key==='Escape')close();if(e.key==='ArrowRight')go(idx+1);if(e.key==='ArrowLeft')go(idx-1)});
 ['wheel','touchmove'].forEach(function(t){ov.addEventListener(t,function(e){e.stopPropagation()},{passive:true})});
