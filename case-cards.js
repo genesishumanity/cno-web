@@ -68,6 +68,26 @@ var CASES=[
  {k:"FROM BOARDS TO FILM",h:"A clear first week.",p:["About a week for a chosen direction. AI cuts the cost of early exploration. A production budget follows the agreed scope."],scenes:[["Shape","Lock one direction, dialogue and timing."],["Visualise","Use AI to explore casting, light, locations and continuity."],["Refine","Review pacing and product visibility. Deliver a visual plan and rough animatic."]]}
  ]}
 ];
+
+var EXTRA={
+"Volkswagen Tiguan":{
+ chain:["VW sits at the edge of the family-car conversation in a status-first market.","The family that matters is inside the car, not watching from the street.","I choose VW for my family.","A villa street, a prestige SUV that can't park, and a wink.","Witty, premium, understated. Baby-blue and minimal."],
+ rollout:{go:["Hero film on YouTube and digital OOH in Dubai","Minimal baby-blue signage, one line","Social cutdowns of the parking scene"],watch:["Consideration among families","Shares and saves of the film","The wink: does the line get repeated?"]}},
+"Saffron & Co.":{
+ chain:["Three locations, a strong product, and no story or engagement online.","Nobody goes to a restaurant just for the food. They go for the people.","Don't bother at home. Come to us.","A heavy Saturday at home becomes a warm table, voiced by real families.","Warm, honest, unscripted."],
+ rollout:{go:["60-second hero film across Instagram, TikTok and YouTube","5–8 family micro-creators, visiting for real","Weekend family table as the recurring format"],watch:["Engagement rate against today's baseline","Shift to family-first perception","Weekend family bookings"]}},
+"ClaimQI":{
+ chain:["Payer teams drown in flags, and “AI finds suspicious claims” is a generic story.","The cost of the wrong decision is bigger than the cost of the missed flag.","Not more flags. Better decisions.","Three films: Prevent, Core, Insights. One product story.","Cinematic, precise, quiet confidence in a cool-blue world."],
+ rollout:{go:["Three hero films, then cutdowns and multi-format assets","LinkedIn, YouTube and Meta","Executive content, industry media, expert collaborations"],watch:["Quality of response, not just reach","Qualified conversations","Pipeline opportunity"]}},
+"Atorie":{
+ chain:["Quality at lower markups risks reading as the cheaper option.","Fashion says be more. People want to feel they're already enough.","good enough.","A woman who keeps walking, a bag people carry, a word people say.","Warm, dark, restrained. Brown leather and a quiet serif."],
+ rollout:{go:["Seed GUDINAF: billboard, poster, sticker, bag","Press moment if curiosity builds","Reveal and drop: hero film, product film, bag, GIFs, stickers, memes"],watch:["Searches, real mentions and shares","Whether the word creates curiosity","Repeat use after the reveal"]}},
+"Dolce Glow":{
+ chain:["A glow that develops over twelve hours is hard to show in one moment.","Feeling good in your skin and checking it all day don't go together.","Two ways to tell the glow.","A jeweller's reveal, and a shared mirror in a restaurant.","Amalfi warmth. Velvet, gold, real skin."],
+ rollout:{go:["Film 1 and Film 2 as a pair: the precious reveal, the human moment","One week from boards to rough animatic","A production budget follows the agreed scope"],watch:["Pacing and product visibility","Which film carries the line best","Relief, not an instant tan, in the handoff"]}}
+};
+CASES.forEach(function(c){var e=EXTRA[c.brand];if(e){c.chain=e.chain;c.rollout=e.rollout}});
+
 var fl=document.createElement('link');fl.rel='stylesheet';fl.href='https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap';document.head.appendChild(fl);
 var G="#e3b982",LN="rgba(255,255,255,.14)";
 var css=document.createElement('style');
@@ -111,6 +131,8 @@ css.textContent=
 ".cc-tx li{font-size:15.5px;line-height:1.45;color:#d3d7dc;padding:10px 0;border-top:1px solid "+LN+"}"+
 ".cc-tx li:first-child{border-top:0}"+
 ".cc-note{margin-top:16px;font-size:12px;line-height:1.5;color:#7c838b;border-top:1px solid "+LN+";padding-top:10px}"+
+".cc-ch>div{display:grid;grid-template-columns:28px 1fr;column-gap:10px;padding:9px 0;border-top:1px solid "+LN+"}.cc-ch>div:first-child{border-top:0}.cc-ch em{font-style:normal;color:"+G+";font-size:11px;letter-spacing:.14em;grid-row:span 2;padding-top:2px}.cc-ch b{font-size:10px;letter-spacing:.2em;color:#8b9299;font-weight:500}.cc-ch p{margin:2px 0 0!important;font-size:14.5px!important;line-height:1.42!important}"+
+".cc-s ul{margin:6px 0 0;padding:0;list-style:none}.cc-s li{font-size:14.5px;line-height:1.45;color:#d3d7dc;padding:9px 0;border-top:1px solid "+LN+"}.cc-s li:first-child{border-top:0}"+
 ".cc-sc2{font-family:'Mrs Saint Delafield','Segoe Script',cursive;font-size:44px;line-height:1;color:"+G+";margin:2px 0 18px}"+
 ".cc-lb{font-size:10.5px;letter-spacing:.22em;color:#8b9299;margin:16px 0 6px}"+
 ".cc-mt{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid "+LN+";margin-top:18px;padding-top:12px}"+
@@ -130,7 +152,11 @@ ov.innerHTML='<div class="cc-pn" role="dialog" aria-modal="true"></div>';
 document.body.appendChild(ov);
 var pn=ov.firstChild,cur=0,idx=0;
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')}
-function all(c,i){return [{overview:true,k:"OVERVIEW",img:"/plates/case-card"+(i+1)+".jpg",cover:true}].concat(c.slides)}
+function all(c,i){
+ var out=[{overview:true,k:"OVERVIEW",img:"/plates/case-card"+(i+1)+".jpg",cover:true}].concat(c.slides);
+ if(c.rollout)out.push({k:"ROLL-OUT + WHAT I'D WATCH",h:"How it travels. What tells us it works.",p:["This is a proposal, so there are no results to claim. These are the signals I would track."],rollout:c.rollout});
+ out.push({k:"THE NEXT STEP",h:"Same method. Your brand.",p:["Business problem, cultural truth, idea, story, direction. In a one-week sprint, from brief to visual plan."],big:["Brief.","Insight.","Idea.","Film."],cta:true});
+ return out}
 function media(s,c,i){
  var bgimg=s.cover?s.img:"/plates/case-card"+(i+1)+".jpg",h='<div class="cc-md'+(s.cover?' cover':'')+'"><div class="bg" style="background-image:url('+bgimg+')"></div><div class="cc-pd">';
  if(s.cover)h+='<div class="cc-im" style="background-image:url('+s.img+')"></div>';
@@ -140,6 +166,7 @@ function media(s,c,i){
  }
  else if(s.img)h+='<div class="cc-im" style="background-image:url('+s.img+')"></div>';
  else if(s.scenes)h+='<div class="cc-sc'+(s.scenes.length===3?' three':'')+'">'+s.scenes.map(function(x,n){return '<div class="cc-s"><em>'+String(n+1).padStart(2,'0')+'</em><b>'+esc(x[0])+'</b><p>'+esc(x[1])+'</p></div>'}).join('')+'</div>';
+ else if(s.rollout)h+='<div class="cc-sc" style="align-content:start"><div class="cc-s" style="align-self:start"><em>ROLL-OUT</em><ul>'+s.rollout.go.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></div><div class="cc-s" style="align-self:start"><em>WHAT I\'D WATCH</em><ul>'+s.rollout.watch.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></div></div>';
  else if(s.stats)h+='<div class="cc-st">'+s.stats.map(function(x){return '<div><b>'+esc(x[0])+'</b><span>'+esc(x[1])+'</span></div>'}).join('')+'</div>';
  else if(s.big)h+='<div class="cc-big">'+s.big.map(function(b){return '<span>'+esc(b)+'</span>'}).join('')+'</div>';
  return h+'</div></div>';
@@ -147,17 +174,20 @@ function media(s,c,i){
 function render(){
  var c=CASES[cur],S=all(c,cur),s=S[idx],n=S.length,tx='<div class="cc-k">'+esc(s.k)+'</div>';
  if(s.overview){
+  var L=["BUSINESS PROBLEM","CULTURAL TRUTH","THE IDEA","THE STORY","DIRECTION"];
   tx+='<h2>'+esc(c.brand)+'</h2><div class="cc-sc2">'+esc(c.idea)+'</div>'+
-  '<div class="cc-lb">THE BRIEF</div><p>'+esc(c.brief)+'</p><div class="cc-lb">THE INSIGHT</div><p>'+esc(c.insight)+'</p>'+
+  (c.chain?'<div class="cc-ch">'+c.chain.map(function(t,n){return '<div><em>'+String(n+1).padStart(2,'0')+'</em><b>'+L[n]+'</b><p>'+esc(t)+'</p></div>'}).join('')+'</div>':
+  '<div class="cc-lb">THE BRIEF</div><p>'+esc(c.brief)+'</p><div class="cc-lb">THE INSIGHT</div><p>'+esc(c.insight)+'</p>')+
   '<div class="cc-mt"><div><b>ROLE</b><span>'+esc(c.role)+'</span></div><div><b>TYPE</b><span>Creative proposal · 2026</span></div></div>';
  }else{
   tx+='<h2>'+esc(s.h)+'</h2>'+(s.p||[]).map(function(t){return '<p>'+esc(t)+'</p>'}).join('')+(s.list?'<ul>'+s.list.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul>':'');
   if(s.cap)tx+='<div class="cc-note">'+esc(s.cap)+'</div>';
+  if(s.cta)tx+='<a class="cc-bt" style="display:inline-block;margin-top:14px" href="mailto:cnoncl.studio@gmail.com">START A CONVERSATION</a>';
  }
  var dots='';for(var d=0;d<n;d++)dots+='<i class="'+(d===idx?'on':'')+'" data-i="'+d+'"></i>';
  pn.innerHTML='<div class="cc-hd"><span><i>'+String(cur+1).padStart(2,'0')+'</i> &nbsp;/&nbsp; '+esc(c.cat)+' &nbsp;·&nbsp; <b>'+esc(c.brand.toUpperCase())+'</b></span><button class="cc-x" aria-label="Close">✕</button></div>'+
- '<div class="cc-bd">'+media(s,c,cur)+'<div class="cc-tx">'+tx+'<div class="cc-num">'+String(idx+1).padStart(2,'0')+'</div></div></div>'+
- '<div class="cc-ft"><button class="cc-ar" id="ccp" aria-label="Previous"'+(idx===0?' disabled':'')+'>←</button><div class="cc-dots">'+dots+'</div><span class="cc-ct">'+String(idx+1).padStart(2,'0')+' / '+String(n).padStart(2,'0')+'</span><button class="cc-ar" id="ccn" aria-label="Next"'+(idx===n-1?' disabled':'')+'>→</button><a class="cc-bt" href="mailto:cnoncl.studio@gmail.com">START A CONVERSATION</a></div>';
+ '<div class="cc-bd">'+media(s,c,cur)+'<div class="cc-tx">'+tx+''+(s.overview?'':'<div class="cc-num">'+String(idx+1).padStart(2,'0')+'</div>')+'</div></div>'+
+ '<div class="cc-ft"><button class="cc-ar" id="ccp" aria-label="Previous"'+(idx===0?' disabled':'')+'>←</button><div class="cc-dots">'+dots+'</div><span class="cc-ct">'+String(idx+1).padStart(2,'0')+' / '+String(n).padStart(2,'0')+'</span><button class="cc-ar" id="ccn" aria-label="Next"'+(idx===n-1?' disabled':'')+'>→</button>'+(s.cta?'':'<a class="cc-bt" href="mailto:cnoncl.studio@gmail.com">START A CONVERSATION</a>')+'</div>';
  pn.querySelector('.cc-x').onclick=close;
  pn.querySelector('#ccp').onclick=function(){go(idx-1)};pn.querySelector('#ccn').onclick=function(){go(idx+1)};
  [].forEach.call(pn.querySelectorAll('.cc-dots i'),function(e){e.onclick=function(){go(+e.getAttribute('data-i'))}});
