@@ -17,3 +17,6 @@
 .pw-k b{font-size:.4cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.12em}
 .pw-k span{font-size:.6cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;overflow-wrap:normal;letter-spacing:.04em}
 .pw-c:after{background:linear-gradient(180deg,rgba(0,0,0,0) 66%,rgba(0,0,0,.72))}
+
+/* three short rows in the empty space right of the Previous Works title */
+.pw-row.pw-up{height:6cqw}
