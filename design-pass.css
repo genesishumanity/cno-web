@@ -11,3 +11,9 @@
 
 /* Previous Works rows are driven by script now (endless random stream), so the old fixed loop animation is off. */
 .pw-t{animation:none!important;will-change:transform}
+
+/* Previous Works labels: one line, ellipsis, smaller, so they never cover the image (4 rows made the tiles shorter). */
+.pw-k{left:.5cqw;right:.5cqw;bottom:.4cqw;gap:.12cqw}
+.pw-k b{font-size:.4cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.12em}
+.pw-k span{font-size:.6cqw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;overflow-wrap:normal;letter-spacing:.04em}
+.pw-c:after{background:linear-gradient(180deg,rgba(0,0,0,0) 66%,rgba(0,0,0,.72))}
