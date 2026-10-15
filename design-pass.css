@@ -8,3 +8,6 @@
 .ov>.card3d:nth-child(7) .lcard,.ov>.card3d:nth-child(7) .ug-pv{transform:perspective(1100px) rotateY(-24deg) scaleX(1.095) rotateX(-3deg)}
 .ov>.card3d:nth-child(8) .lcard,.ov>.card3d:nth-child(8) .ug-pv{transform:perspective(1100px) rotateY(-29deg) scaleX(1.143) rotateX(-3deg)}
 .ov>.card3d:has(.lcard:hover) .lcard,.ov>.card3d:has(.lcard:hover) .ug-pv{transform:perspective(1100px) rotateY(-6deg) scaleX(1.01) rotateX(-2deg)}
+
+/* Previous Works rows are driven by script now (endless random stream), so the old fixed loop animation is off. */
+.pw-t{animation:none!important;will-change:transform}
