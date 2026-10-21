@@ -224,7 +224,7 @@ function pwSetup(root,items){
  var wkLand=innerWidth/innerHeight>1.2,N=wkLand?5:7,UP=wkLand?2:3,hold=false,shown=new Set(),rows=[],last=0,root2=document.createElement('div');root2.className='pwr';root2.id='pw-root2';root2.style.cssText=wkLand?'left:0;top:10%;width:100%;height:auto;':'left:30%;top:10.4%;width:70%;height:auto;';var root3=null;if(wkLand){root.style.top='65.1%';root.style.height='auto';document.documentElement.classList.add('wk-c');root3=document.createElement('div');root3.className='pwr';root3.id='pw-root3';root3.style.cssText='left:0;top:46%;width:100%;height:auto;';root.parentNode.insertBefore(root3,root)}root.parentNode.insertBefore(root2,root);
  function gapPx(tr){return parseFloat(getComputedStyle(tr).columnGap)||0}
  function mk(it){var ar=it.w/it.h;ar=Math.max(.66,Math.min(2.1,ar));var c=document.createElement('div');c.className='pw-c';c._it=it;c.style.aspectRatio=ar;c.setAttribute('aria-hidden','true');
-  var m;if(it.t==='vid'){m=document.createElement('video');m.muted=true;m.loop=true;m.playsInline=true;m.setAttribute('playsinline','');m.setAttribute('muted','');m.preload='none';m.dataset.src=it.src}else{m=document.createElement('img');m.alt='';m.decoding='async';m.dataset.src=it.src}
+  var m;if(it.t==='vid'){m=document.createElement('video');m.muted=true;m.loop=true;m.playsInline=true;m.setAttribute('playsinline','');m.setAttribute('muted','');m.preload='none';m.dataset.src=it.src;m.poster='/works/media/p/'+it.src.split('/').pop().replace('.mp4','.jpg')}else{m=document.createElement('img');m.alt='';m.decoding='async';m.dataset.src=it.src}
   c.appendChild(m);var b=document.createElement('b');b.textContent=it.cat;var sp=document.createElement('span');sp.textContent=it.title;var kk=document.createElement('div');kk.className='pw-k';kk.appendChild(b);kk.appendChild(sp);c.appendChild(kk);
   var sd=it.short||it.desc;if(sd){var di=document.createElement('i');di.textContent=sd;c.appendChild(di)}
   return {it:it,el:c}}
@@ -264,7 +264,14 @@ function pwSetup(root,items){
 function pwInit(){var root=document.getElementById('pw-root');if(!root||root.getAttribute('data-b'))return;root.setAttribute('data-b','1');
  if('IntersectionObserver' in window)pwIO=new IntersectionObserver(function(es){es.forEach(function(e){var m=e.target.firstChild,i=pwVis.indexOf(m);if(e.isIntersecting){if(i<0)pwVis.push(m);if(m.tagName==='IMG'&&!m.src)m.src=m.dataset.src}else if(i>=0){pwVis.splice(i,1);if(m.tagName==='VIDEO')m.pause()}})},{rootMargin:'0px 120px'});
  fetch('/works/manifest.json').then(function(r){return r.json()}).then(function(items){pwSetup(root,items)}).catch(function(){})}
-setInterval(function(){pwInit();var on=!!document.querySelector('.scene.on #pw-root');for(var i=0;i<pwVis.length;i++){var m=pwVis[i];if(m.tagName!=='VIDEO')continue;if(on){if(!m.src)m.src=m.dataset.src;if(m.paused)m.play().catch(function(){})}else if(!m.paused)m.pause()}},600);
+/* Previous Works: at most PW_LIVE tile videos decode at once (the rest show their poster), the set rotates so every clip gets a turn */
+var PW_LIVE=5,pwTurn=0;
+setInterval(function(){pwInit();var on=!!document.querySelector('.scene.on #pw-root'),vids=[],i,m;for(i=0;i<pwVis.length;i++){m=pwVis[i];if(m.tagName!=='VIDEO')continue;var r=m.getBoundingClientRect(),hr=m.closest('#pw-root3');if(hr){var H=hr.getBoundingClientRect(),cx=(r.left+r.width/2-H.left)/H.width;if(cx>.2&&cx<.8){if(!m.paused)m.pause();continue}}if(r.right<0||r.left>innerWidth)continue;vids.push(m)}
+ if(!on){for(i=0;i<pwVis.length;i++){m=pwVis[i];if(m.tagName==='VIDEO'&&!m.paused)m.pause()}return}
+ var live=vids.filter(function(v){return !v.paused});if(live.length<PW_LIVE){var idle=vids.filter(function(v){return v.paused});idle.sort(function(a,b){return (a._t||0)-(b._t||0)});for(i=0;i<idle.length&&live.length<PW_LIVE;i++){m=idle[i];if(!m.src)m.src=m.dataset.src;m._t=++pwTurn;m.play().catch(function(){});live.push(m)}}
+ for(i=0;i<pwVis.length;i++){m=pwVis[i];if(m.tagName==='VIDEO'&&!m.paused&&vids.indexOf(m)<0)m.pause()}
+},600);
+setInterval(function(){if(!document.querySelector('.scene.on #pw-root'))return;var live=[];for(var i=0;i<pwVis.length;i++){var m=pwVis[i];if(m.tagName==='VIDEO'&&!m.paused)live.push(m)}if(live.length>=PW_LIVE){live.sort(function(a,b){return (a._t||0)-(b._t||0)});live[0].pause();live[0]._t=++pwTurn}},4000);
 /* UGC Systems: live clips play inside the 21 screens of the plate (7 x 3). UGC clips only. Every 1.6-2.6 s one screen cross-fades to a clip not on screen; never two takes of the same set-up at once. Posters only with reduced motion. */
 var UGRP={"trust":"trust","saves":"saves","follows":"follows","comments":"comments","run":"run","perfume":"esra-pink","desk":"desk","lumea":"lumea","ember":"ember","forge":"forge","camera":"camera","outdoor-a":"outdoor","outdoor-b":"outdoor","outdoor-c":"outdoor","hf-089f83ae":"esra-white","hf-24fb846a":"esra-white","hf-c0726840":"esra-white","hf-2b108951":"esra-brush","hf-30b87f03":"esra-brush","hf-2db4c209":"esra-pink","hf-2f2a6fbc":"esra-pink","hf-4be5254b":"esra-pink","hf-73765e37":"esra-pink","hf-88132bea":"esra-pink","hf-b339e831":"esra-pink","hf-c8239379":"esra-vanity","hf-e4724151":"esra-mirror","hf-1c001702":"desk-b","hf-9b6fbbf7":"desk-b","hf-4580b790":"beige","hf-6ac6033d":"shirt","hf-d34e8893":"bob"},UV=Object.keys(UGRP),
  UCOL=7,UROW=3,UXS=[600.5,669,738,807,875.5,944,1012.5],UW=57,UY=[85,207,322],UHS=[108.5,103.5,96];
@@ -272,19 +279,24 @@ var uvStill=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var uvc=document.createElement('style');uvc.textContent='.uv{position:absolute;pointer-events:none}.uv-sc{position:absolute;left:0;top:0;width:40%;height:70%;background:radial-gradient(ellipse 100% 62% at 0% 32%,rgba(6,7,10,.6) 0%,rgba(6,7,10,.35) 50%,rgba(6,7,10,0) 90%)}.uv-t{position:absolute;border-radius:.12cqw;overflow:hidden;background:#0d1320;}.uv-t img,.uv-t video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.92);transition:opacity .9s}.uv-t:after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,0) 38%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.35))}';document.head.appendChild(uvc);
 var uv=null;function uvG(n){return UGRP[n]||n}
 function uvPct(v,t){return v/(t?941:1672)*100+'%'}
-function uvMedia(name){var m;if(uvStill){m=document.createElement('img');m.alt='';m.src='/video/ugc/v/'+name+'.jpg'}else{m=document.createElement('video');m.muted=true;m.loop=true;m.playsInline=true;m.setAttribute('playsinline','');m.setAttribute('muted','');m.preload='auto';m.poster='/video/ugc/v/'+name+'.jpg';m.src='/video/ugc/v/'+name+'.mp4'}m._n=name;return m}
+var UV_LIVE=8,uvTurn=0;
+function uvStillImg(name){var m=document.createElement('img');m.alt='';m.src='/video/ugc/v/'+name+'.jpg';m._n=name;return m}
+function uvMedia(name,still){if(still||uvStill)return uvStillImg(name);var m=document.createElement('video');m.muted=true;m.loop=true;m.playsInline=true;m.setAttribute('playsinline','');m.setAttribute('muted','');m.preload='auto';m.poster='/video/ugc/v/'+name+'.jpg';m.src='/video/ugc/v/'+name+'.mp4';m._n=name;m._t=++uvTurn;return m}
 function uvBuild(){var sc=document.querySelectorAll('.scene')[3],ov=sc&&sc.querySelector('.ov');if(!ov)return;
  if(uv&&ov.contains(uv.root))return;
  var root=document.createElement('div');root.className='uv';root.setAttribute('aria-hidden','true');root.style.cssText='left:0;top:0;width:100%;height:100%';
  var sc2=document.createElement('div');sc2.className='uv-sc';root.appendChild(sc2);
  var all=UV.slice().sort(function(){return Math.random()-.5}),seen={},pool=[],rest=[],tiles=[],n=UCOL*UROW;all.forEach(function(v){if(!seen[uvG(v)]&&pool.length<n){seen[uvG(v)]=1;pool.push(v)}else rest.push(v)});pool=pool.concat(rest);
  for(var i=0;i<n;i++){var t=document.createElement('div');t.className='uv-t';t.style.cssText='left:'+uvPct(UXS[i%UCOL])+';top:'+uvPct(UY[Math.floor(i/UCOL)],1)+';width:'+uvPct(UW)+';height:'+uvPct(UHS[Math.floor(i/UCOL)],1);
-  t.appendChild(uvMedia(pool[i]));root.appendChild(t);tiles.push(t)}
+  t.appendChild(uvMedia(pool[i],i>=UV_LIVE));root.appendChild(t);tiles.push(t)}
  ov.insertBefore(root,ov.firstChild);uv={root:root,tiles:tiles,spare:pool.slice(n)}}
 function uvOn(){return !!(uv&&uv.root.closest('.scene.on'))}
-function uvSwap(){if(!uv||uvStill||!uvOn()||!uv.spare.length)return;var k;k=Math.floor(Math.random()*uv.tiles.length);
- var t=uv.tiles[k];if(t.querySelectorAll('video').length>1)return;var on={};uv.tiles.forEach(function(x){x.querySelectorAll('video').forEach(function(m){on[uvG(m._n)]=1})});var si=-1;for(var q=0;q<uv.spare.length;q++)if(!on[uvG(uv.spare[q])]){si=q;break}if(si<0)return;var old=t.querySelector('video'),nm=uv.spare.splice(si,1)[0],v=uvMedia(nm);v.style.opacity=0;t.appendChild(v);
- v.addEventListener('playing',function(){v.style.opacity=1;setTimeout(function(){if(old.parentNode){old.pause();old.removeAttribute('src');old.load();old.remove()}uv.spare.push(old._n)},950)},{once:true});v.play().catch(function(){})}
+function uvSwap(){if(!uv||uvStill||!uvOn()||!uv.spare.length)return;var k=Math.floor(Math.random()*uv.tiles.length),t=uv.tiles[k];if(t.children.length>1)return;
+ var on={};uv.tiles.forEach(function(x){for(var c=0;c<x.children.length;c++)on[uvG(x.children[c]._n)]=1});var si=-1;for(var q=0;q<uv.spare.length;q++)if(!on[uvG(uv.spare[q])]){si=q;break}if(si<0)return;
+ var old=t.firstChild,nm=uv.spare.splice(si,1)[0],v=uvMedia(nm);v.style.opacity=0;t.appendChild(v);
+ v.addEventListener('playing',function(){v.style.opacity=1;setTimeout(function(){if(old.parentNode){if(old.tagName==='VIDEO'){old.pause();old.removeAttribute('src');old.load()}old.remove()}uv.spare.push(old._n);
+  var live=[];uv.tiles.forEach(function(x){var m=x.firstChild;if(m&&m.tagName==='VIDEO'&&x.children.length===1)live.push(m)});
+  if(live.length>UV_LIVE){live.sort(function(a,b){return a._t-b._t});var o=live[0],img=uvStillImg(o._n);o.parentNode.insertBefore(img,o);o.pause();o.removeAttribute('src');o.load();o.remove()}},950)},{once:true});v.play().catch(function(){})}
 setInterval(function(){uvBuild();if(!uv||uvStill)return;var on=uvOn()&&document.visibilityState==='visible';uv.tiles.forEach(function(t){var vs=t.querySelectorAll('video');for(var i=0;i<vs.length;i++){var v=vs[i];if(on){if(v.paused)v.play().catch(function(){})}else if(!v.paused)v.pause()}})},700);
 (function sw(){setTimeout(function(){uvSwap();sw()},1600+Math.random()*1000)})();
 /* Wider-than-16:9 screens (16:10 laptops, iPad) crop the stage at both sides; keep copy near an edge at least M px from it */
