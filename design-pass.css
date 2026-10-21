@@ -38,3 +38,5 @@
 .lwall .lgrad{position:absolute;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.88),rgba(0,0,0,.6) 55%,rgba(0,0,0,0))}
 .lwall .t{pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.85)}
 .lwall .mute{color:rgba(255,255,255,.82)}
+/* Case Studies readability: soft shade behind the headline (top-left) and under the brands strip, whatever the plate does */
+.stage:has(.lwall)::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 52% 40% at 0% 8%,rgba(0,0,0,.72),rgba(0,0,0,0) 72%),linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,0) 15%)}
