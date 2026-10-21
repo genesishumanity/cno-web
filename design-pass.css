@@ -34,3 +34,4 @@
 .ov:has(.lwall)::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 46% 30% at 0% 17%,rgba(4,5,8,.88),rgba(4,5,8,.6) 55%,rgba(4,5,8,0)),linear-gradient(0deg,rgba(4,5,8,.82),rgba(4,5,8,.45) 7%,rgba(4,5,8,0) 14%)}
 /* Scene copy and media are simply there when a scene is reached: no fade or slide-in */
 .ov{opacity:1;translate:none;transition:none}
+.scene:not(.on) .ov{opacity:0}
