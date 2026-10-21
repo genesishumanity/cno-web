@@ -268,7 +268,7 @@ setInterval(function(){pwInit();var on=!!document.querySelector('.scene.on #pw-r
 /* UGC Systems: live clips play inside the 21 screens of the plate (7 x 3). One screen cross-fades to a new clip every few seconds. Posters only with reduced motion. */
 var UV=['trust','saves','follows','comments','run','perfume','desk','lumea','ember','forge','camera','outdoor-a','outdoor-b','outdoor-c',
  'reel-a','reel-b','reel-c','reel-d','street','why','educational','facts','brandfilm-a','recruit-b','culture'],
- UCOL=7,UROW=3,UXS=[586,658,732,806,881,957,1032],UW=65,UY=[99,175,250],UH=65;
+ UCOL=7,UROW=3,UXS=[698,764,830,897,963,1029,1095],UW=55,UY=[93,178,263],UH=73;
 var uvStill=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var uvc=document.createElement('style');uvc.textContent='.uv{position:absolute;pointer-events:none}.uv-sc{position:absolute;left:0;top:0;width:50%;height:100%;background:radial-gradient(ellipse 100% 56% at 0% 40%,rgba(6,7,10,.92) 0%,rgba(6,7,10,.8) 45%,rgba(6,7,10,0) 88%)}.uv-t{position:absolute;border-radius:.12cqw;overflow:hidden;background:#0d1320;}.uv-t img,.uv-t video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.92);transition:opacity .9s}.uv-t:after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,0) 38%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.35))}';document.head.appendChild(uvc);
 var uv=null;
