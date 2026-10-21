@@ -5,7 +5,7 @@ var mq=document.createElement('style');mq.textContent='.ccmq{-webkit-mask-image:
 var A="/work/atorie/frames/",D="/work/dolce/frames/",Q="/work/claimqi/",V="/work/vw/",S="/work/saffron/";
 var CASES=[
 /* 0 — VOLKSWAGEN TIGUAN */
-{brand:"Volkswagen Tiguan",cat:"AUTOMOTIVE",title:"I choose VW for my family.",idea:"Choose enough.",role:ROLE,
+{brand:"Volkswagen",cat:"AUTOMOTIVE",title:"I choose VW for my family.",idea:"Choose enough.",role:ROLE,
  brief:"In Dubai a car is often chosen for the people outside it. The family inside pays for it every day.",
  insight:"The family that matters is inside the car, not watching from the street.",
  slides:[
