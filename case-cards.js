@@ -28,7 +28,7 @@ var CASES=[
  {k:"PROJECTED TARGETS",h:"Where this should land.",p:["Working targets within three months of launch. Not results."],stats:[["+40–60%","Engagement rate"],["+25–35%","Family-first perception"],["+20%","Follower growth"],["+20%","Weekend family bookings"]]}
  ]},
 /* 2 — CLAIMQI */
-{brand:"ClaimQI",cat:"B2B · AI HEALTHCARE",title:"Not more flags. Better decisions.",idea:"Know when not to act.",role:ROLE,
+{brand:"ClaimQI",cat:"AI HEALTHCARE",title:"Not more flags. Better decisions.",idea:"Know when not to act.",role:ROLE,
  brief:"Payer teams are drowning in flags. More noise, and the valuable cases get lost.",
  insight:"The better question isn't “does this look suspicious?” It's “does this deserve action?”",
  slides:[
