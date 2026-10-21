@@ -31,3 +31,10 @@
 #pw-pop .k span{display:block;margin-top:3px;font-weight:600;font-size:15px;letter-spacing:.03em;text-transform:uppercase}
 #pw-pop .k i{display:block;margin-top:5px;font-style:normal;font-size:11.5px;line-height:1.35;color:rgba(255,255,255,.88)}
 @media (hover:none){#pw-pop{display:none}}
+/* Case Studies on the LED wall plate: panels are part of the background; hover lights the panel, people stay silhouettes */
+.lwall .lglow{opacity:0;transition:opacity .35s ease;object-fit:fill;-webkit-mask-image:none;mask-image:none}
+.lwall:has(.lcard:hover){translate:none}
+.lwall:has(.lcard:hover) .lcard{opacity:1;filter:none;box-shadow:none}
+.lwall .lgrad{position:absolute;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.88),rgba(0,0,0,.6) 55%,rgba(0,0,0,0))}
+.lwall .t{pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.85)}
+.lwall .mute{color:rgba(255,255,255,.82)}
