@@ -297,6 +297,4 @@ function edgeFix(){if(!document.querySelector('.stage'))return;var W=innerWidth,
  L.forEach(function(e){if(e._tx!==dl){e._tx=dl;e.style.translate=dl?Math.round(dl)+'px 0':''}});
  R.forEach(function(e){if(e._tx!==-dr){e._tx=-dr;e.style.translate=dr?-Math.round(dr)+'px 0':''}})}
 addEventListener('resize',edgeFix);setInterval(edgeFix,1000);edgeFix();
-/* "Open a case" button on Case Studies opens the first case file */
-document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href="#open-case"]');if(!a)return;e.preventDefault();if(window.openCase)window.openCase(0)});
 })();
