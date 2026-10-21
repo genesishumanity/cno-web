@@ -1,0 +1,35 @@
+# Site changes and review — 2026-10-22
+
+## Delivered locally
+- Restored the pre-centered Works design from 6ee7779: title upper left, three short upper rows and four lower rows, original hover size. Kept loading posters and all existing 117 manifest entries/descriptions unchanged.
+- Added 15 existing campaign images to Works (117 -> 132 total; 55 -> 70 still images). Each addition explicitly says CONCEPT and describes a proposal; no new client-result claims.
+- UGC wall: replaced the eight-live-video cap with the actual 7 x 3 tile count. All 21 screens remain video. Reduced-motion posters and inactive-scene pausing preserved.
+- Added a portrait UGC grid because the original cinematic wall was outside the phone viewport.
+- Cache keys: design-pass.css v21, case-cards.js v40.
+
+## Validation
+- node --check case-cards.js; git diff --check: PASS.
+- Browser check .github/checks/site.cjs: PASS on local Chromium, desktop 1440 x 900 and phone emulation 390 x 844.
+- Verified 7 Works rows; upper-left heading; preserved subtitle and hover descriptions; all 132 local media paths exist.
+- All 21 UGC video tiles have decoded frames, unpaused state and advancing playback; still videos after cross-fade; paused when leaving scene; 21 posters under reduced motion.
+- All 21 phone UGC tiles fit within viewport.
+- Separate Chromium decoding check: all 32 UGC source MP4s played and advanced (script at /tmp/cno-site-review/all-clips.cjs).
+- Existing 117 manifest objects compared with HEAD and confirmed unchanged.
+- Browser page errors: none. Screenshots retained at /Users/cno/cno-web-handoff/review-20261022.
+- Production publication and fresh live verification: pending.
+
+Reproduce browser check with local HTTP server on port 18765 and PLAYWRIGHT_MODULE, CHROMIUM_EXECUTABLE pointing to the installed tools, then node .github/checks/site.cjs. BASE_URL can target production.
+
+## Design assessment
+Reviewed all seven desktop scenes and phone Works, UGC, Contact.
+- Intro: coherent warm cinematic identity; the left-aligned title provides a strong reading order. Preserve it.
+- Cases: campaign images integrated into the wall make the story distinctive. Small labels and clickable-image affordance are weak; concept/proposal status should remain explicit.
+- Works: upper-left copy gives the collection a stable anchor and matches the rest of the site. Many moving tiles still compete for attention; curated selection matters more than adding near-duplicates.
+- UGC: the 8/21 playback cap and offscreen phone wall were functional problems; addressed here. The 21 simultaneous videos increase decode/network use; real low-power phones remain untested.
+- Thinking: warm light, human and robot story fit the site; a visible problem-to-decision example would substantiate the general statement more strongly.
+- Systems: visually strong but the four restricted-system links lead to an access-restricted message. Public previews/status would make the section more useful. Not changed in this scoped patch.
+- Contact: CTA and email work as clear next actions. Phone header navigation is extremely small and tightly packed; a dedicated mobile-navigation pass is the next design priority.
+- Accessibility: hover-only Works descriptions and non-semantic clickable case wrappers remain weak for keyboard/touch users. No claim of WCAG compliance or measured contrast audit.
+
+## Limits / rollback
+Real iOS Safari, Android devices, low-power mode and throttled-network performance were not tested. Native browser autoplay policies still apply. Restore the release parent with git revert to roll back this scoped commit. Do not reset or overwrite unrelated work.

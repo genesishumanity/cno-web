@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict');const fs=require('node:fs');
+fs.mkdirSync('/tmp/cno-site-review',{recursive:true});
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+(async()=>{const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_EXECUTABLE});const page=await browser.newPage({viewport:{width:1440,height:900}});const errors=[];page.on('pageerror',e=>errors.push(e.message));const base=process.env.BASE_URL||'http://127.0.0.1:18765';
+await page.goto(base,{waitUntil:'networkidle'});await page.locator('header a[href="#works"]').first().click();await page.waitForTimeout(1800);
+assert.equal(await page.locator('.pw-row').count(),7);assert.equal(await page.locator('#pw-root3').count(),0);
+const heading=await page.locator('.wk-h').boundingBox();assert(heading.x<100&&heading.y<200,JSON.stringify(heading));
+assert.match(await page.locator('.wk-s').textContent(),/Identity, campaigns, film and packaging/);
+const manifest=await page.evaluate(()=>fetch('/works/manifest.json').then(r=>r.json()));assert.equal(manifest.length,132);
+for(const item of manifest)assert(fs.existsSync(require('path').resolve(__dirname,'../..')+item.src),item.src);
+assert(manifest.filter(x=>x.cat.endsWith('CONCEPT')).length>=15);
+await page.screenshot({path:'/tmp/cno-site-review/works-after.png'});
+const tile=page.locator('#pw-root2 .pw-c').nth(2);const tr=await tile.boundingBox();await page.mouse.move(tr.x+tr.width/2,tr.y+tr.height/2);await page.waitForTimeout(400);assert.equal(await page.locator('#pw-pop.on .k i').count(),1);await page.mouse.move(20,80);
+await page.goto(base+'/#ugc',{waitUntil:'networkidle'});await page.waitForFunction(()=>document.querySelectorAll('.uv-t').length===21&&[...document.querySelectorAll('.uv-t')].every(t=>{let v=t.querySelector('video');return v&&!v.paused&&v.readyState>=2&&v.currentTime>0}),{timeout:20000});
+const initial=await page.locator('.uv-t video').evaluateAll(vs=>vs.map(v=>({name:v._n,time:v.currentTime})));
+await page.waitForTimeout(1200);
+const advanced=await page.locator('.uv-t').evaluateAll(ts=>ts.map(t=>{const v=t.querySelector('video');return {name:v?._n,time:v?.currentTime,paused:v?.paused,error:v?.error?.message}}));
+assert.equal(advanced.length,21);assert(advanced.every(v=>!v.paused&&!v.error&&v.time>0));
+assert(advanced.filter(v=>{const old=initial.find(o=>o.name===v.name);return old&&old.time!==v.time}).length>=19);
+await page.waitForTimeout(4500);assert.equal(await page.locator('.uv-t img').count(),0);await page.screenshot({path:'/tmp/cno-site-review/ugc-after.png'});
+await page.goto(base+'/#contact');await page.waitForTimeout(1200);assert(await page.locator('.uv-t video').evaluateAll(vs=>vs.every(v=>v.paused)));
+await page.emulateMedia({reducedMotion:'reduce'});await page.reload({waitUntil:'networkidle'});await page.waitForFunction(()=>document.querySelectorAll('.uv-t').length===21);assert.equal(await page.locator('.uv-t video').count(),0);assert.equal(await page.locator('.uv-t img').count(),21);
+const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});await mobile.goto(base,{waitUntil:'networkidle'});await mobile.locator('header .mnav a[href="#works"]').click();await mobile.waitForTimeout(1800);await mobile.screenshot({path:'/tmp/cno-site-review/works-mobile.png'});await mobile.goto(base+'/#ugc',{waitUntil:'networkidle'});await mobile.waitForTimeout(2000);const boxes=await mobile.locator('.uv-t').evaluateAll(ts=>ts.map(t=>{const r=t.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom}}));assert.equal(boxes.length,21);await mobile.screenshot({path:'/tmp/cno-site-review/ugc-mobile.png'});assert(boxes.every(r=>r.x>=0&&r.right<=390&&r.y>400&&r.bottom<=844));await mobile.screenshot({path:'/tmp/cno-site-review/ugc-mobile.png'});await mobile.goto(base+'/#contact',{waitUntil:'networkidle'});await mobile.waitForTimeout(2000);await mobile.screenshot({path:'/tmp/cno-site-review/contact-mobile.png'});
+assert.deepEqual(errors,[]);console.log(JSON.stringify({result:'PASS',library:manifest.length,added:15,ugcTiles:21,playing:advanced.length,pausedWhenInactive:true,reducedMotion:true,consoleErrors:errors}));await browser.close()})().catch(e=>{console.error(e);process.exit(1)})
