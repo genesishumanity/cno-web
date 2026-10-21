@@ -16,7 +16,7 @@
 - Separate Chromium decoding check: all 32 UGC source MP4s played and advanced (script at /tmp/cno-site-review/all-clips.cjs).
 - Existing 117 manifest objects compared with HEAD and confirmed unchanged.
 - Browser page errors: none. Screenshots retained at /Users/cno/cno-web-handoff/review-20261022.
-- Production publication and fresh live verification: pending.
+- Production: GitHub Pages confirmed built for 509c82e0f7409d3e5e1879f400e845a51a8d584d. Fresh browser regression against https://cnonclstudio.com passed: 132 entries, 21/21 playing UGC screens, preserved descriptions/hover, reduced motion, inactive pausing and portrait bounds. No page errors. This evidence-only follow-up changes no runtime assets.
 
 Reproduce browser check with local HTTP server on port 18765 and PLAYWRIGHT_MODULE, CHROMIUM_EXECUTABLE pointing to the installed tools, then node .github/checks/site.cjs. BASE_URL can target production.
 
