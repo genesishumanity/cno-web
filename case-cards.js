@@ -265,14 +265,13 @@ function pwInit(){var root=document.getElementById('pw-root');if(!root||root.get
  if('IntersectionObserver' in window)pwIO=new IntersectionObserver(function(es){es.forEach(function(e){var m=e.target.firstChild,i=pwVis.indexOf(m);if(e.isIntersecting){if(i<0)pwVis.push(m);if(m.tagName==='IMG'&&!m.src)m.src=m.dataset.src}else if(i>=0){pwVis.splice(i,1);if(m.tagName==='VIDEO')m.pause()}})},{rootMargin:'0px 120px'});
  fetch('/works/manifest.json').then(function(r){return r.json()}).then(function(items){pwSetup(root,items)}).catch(function(){})}
 setInterval(function(){pwInit();var on=!!document.querySelector('.scene.on #pw-root');for(var i=0;i<pwVis.length;i++){var m=pwVis[i];if(m.tagName!=='VIDEO')continue;if(on){if(!m.src)m.src=m.dataset.src;if(m.paused)m.play().catch(function(){})}else if(!m.paused)m.pause()}},600);
-/* UGC Systems: live clips play inside the 21 screens of the plate (7 x 3).
-   One screen cross-fades every few seconds, a "selected" ring moves to another screen every few seconds. Posters only with reduced motion. */
+/* UGC Systems: live clips play inside the 21 screens of the plate (7 x 3). One screen cross-fades to a new clip every few seconds. Posters only with reduced motion. */
 var UV=['trust','saves','follows','comments','run','perfume','desk','lumea','ember','forge','camera','outdoor-a','outdoor-b','outdoor-c',
  'reel-a','reel-b','reel-c','reel-d','street','why','educational','facts','brandfilm-a','recruit-b','culture'],
- UCOL=7,UROW=3,UX=645,UPX=75,UW=57,UY=[108,219.5,330.5],UH=96;
+ UCOL=7,UROW=3,UXS=[586,658,732,806,881,957,1032],UW=65,UY=[99,175,250],UH=65;
 var uvStill=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var uvc=document.createElement('style');uvc.textContent='.uv{position:absolute;pointer-events:none}.uv-sc{position:absolute;left:0;top:0;width:50%;height:100%;background:radial-gradient(ellipse 100% 56% at 0% 40%,rgba(6,7,10,.92) 0%,rgba(6,7,10,.8) 45%,rgba(6,7,10,0) 88%)}.uv-t{position:absolute;border-radius:.12cqw;overflow:hidden;background:#0d1320;transition:box-shadow .5s}.uv-t img,.uv-t video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.92);transition:opacity .9s}.uv-t:after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,0) 38%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.35))}.uv-t.sel{box-shadow:0 0 0 1px rgba(255,190,120,.95),0 0 1.2cqw rgba(255,176,96,.45)}';document.head.appendChild(uvc);
-var uv=null,uvSel=-1;
+var uvc=document.createElement('style');uvc.textContent='.uv{position:absolute;pointer-events:none}.uv-sc{position:absolute;left:0;top:0;width:50%;height:100%;background:radial-gradient(ellipse 100% 56% at 0% 40%,rgba(6,7,10,.92) 0%,rgba(6,7,10,.8) 45%,rgba(6,7,10,0) 88%)}.uv-t{position:absolute;border-radius:.12cqw;overflow:hidden;background:#0d1320;}.uv-t img,.uv-t video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(.92);transition:opacity .9s}.uv-t:after{content:"";position:absolute;inset:0;background:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,0) 38%),linear-gradient(180deg,rgba(0,0,0,0) 60%,rgba(0,0,0,.35))}';document.head.appendChild(uvc);
+var uv=null;
 function uvPct(v,t){return v/(t?941:1672)*100+'%'}
 function uvMedia(name){var m;if(uvStill){m=document.createElement('img');m.alt='';m.src='/video/ugc/v/'+name+'.jpg'}else{m=document.createElement('video');m.muted=true;m.loop=true;m.playsInline=true;m.setAttribute('playsinline','');m.setAttribute('muted','');m.preload='auto';m.poster='/video/ugc/v/'+name+'.jpg';m.src='/video/ugc/v/'+name+'.mp4'}m._n=name;return m}
 function uvBuild(){var sc=document.querySelectorAll('.scene')[2],ov=sc&&sc.querySelector('.ov');if(!ov)return;
@@ -280,16 +279,14 @@ function uvBuild(){var sc=document.querySelectorAll('.scene')[2],ov=sc&&sc.query
  var root=document.createElement('div');root.className='uv';root.setAttribute('aria-hidden','true');root.style.cssText='left:0;top:0;width:100%;height:100%';
  var sc2=document.createElement('div');sc2.className='uv-sc';root.appendChild(sc2);
  var pool=UV.slice().sort(function(){return Math.random()-.5}),tiles=[],n=UCOL*UROW;
- for(var i=0;i<n;i++){var t=document.createElement('div');t.className='uv-t';t.style.cssText='left:'+uvPct(UX+i%UCOL*UPX)+';top:'+uvPct(UY[Math.floor(i/UCOL)],1)+';width:'+uvPct(UW)+';height:'+uvPct(UH,1);
+ for(var i=0;i<n;i++){var t=document.createElement('div');t.className='uv-t';t.style.cssText='left:'+uvPct(UXS[i%UCOL])+';top:'+uvPct(UY[Math.floor(i/UCOL)],1)+';width:'+uvPct(UW)+';height:'+uvPct(UH,1);
   t.appendChild(uvMedia(pool[i]));root.appendChild(t);tiles.push(t)}
- ov.insertBefore(root,ov.firstChild);uv={root:root,tiles:tiles,spare:pool.slice(n)};uvSel=-1;uvTick()}
+ ov.insertBefore(root,ov.firstChild);uv={root:root,tiles:tiles,spare:pool.slice(n)}}
 function uvOn(){return !!(uv&&uv.root.closest('.scene.on'))}
-function uvTick(){if(!uv)return;var n;do{n=Math.floor(Math.random()*uv.tiles.length)}while(n===uvSel);if(uvSel>=0)uv.tiles[uvSel].classList.remove('sel');uvSel=n;uv.tiles[n].classList.add('sel')}
-function uvSwap(){if(!uv||uvStill||!uvOn()||!uv.spare.length)return;var k;do{k=Math.floor(Math.random()*uv.tiles.length)}while(k===uvSel);
+function uvSwap(){if(!uv||uvStill||!uvOn()||!uv.spare.length)return;var k;k=Math.floor(Math.random()*uv.tiles.length);
  var t=uv.tiles[k];if(t.querySelectorAll('video').length>1)return;var old=t.querySelector('video'),nm=uv.spare.shift(),v=uvMedia(nm);v.style.opacity=0;t.appendChild(v);
  v.addEventListener('playing',function(){v.style.opacity=1;setTimeout(function(){if(old.parentNode){old.pause();old.removeAttribute('src');old.load();old.remove()}uv.spare.push(old._n)},950)},{once:true});v.play().catch(function(){})}
 setInterval(function(){uvBuild();if(!uv||uvStill)return;var on=uvOn()&&document.visibilityState==='visible';uv.tiles.forEach(function(t){var vs=t.querySelectorAll('video');for(var i=0;i<vs.length;i++){var v=vs[i];if(on){if(v.paused)v.play().catch(function(){})}else if(!v.paused)v.pause()}})},700);
-setInterval(function(){if(uvOn())uvTick()},5600);
 (function sw(){setTimeout(function(){uvSwap();sw()},3000+Math.random()*2000)})();
 /* Wider-than-16:9 screens (16:10 laptops, iPad) crop the stage at both sides; keep copy near an edge at least M px from it */
 function edgeFix(){if(!document.querySelector('.stage'))return;var W=innerWidth,M=Math.max(32,W*.025),land=W/innerHeight>1.2,L=[],R=[],minL=1e9,maxR=-1e9;

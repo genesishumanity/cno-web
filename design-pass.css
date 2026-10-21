@@ -27,8 +27,10 @@
 .lwall .lglow{opacity:0;transition:opacity .5s ease;object-fit:fill;-webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 40%,#000 45%,transparent);mask-image:radial-gradient(ellipse 75% 70% at 50% 40%,#000 45%,transparent)}
 .lwall:has(.lcard:hover){translate:none}
 .lwall:has(.lcard:hover) .lcard{opacity:1;filter:none;box-shadow:none}
-.lwall .lgrad{position:absolute;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.92),rgba(0,0,0,.72) 55%,rgba(0,0,0,0))}
+.lwall .lgrad{position:absolute;pointer-events:none;background:linear-gradient(180deg,rgba(3,4,7,.86),rgba(3,4,7,.6) 58%,rgba(3,4,7,0))}
 .lwall .t{pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.85)}
 .lwall .mute{color:rgba(255,255,255,.82)}
 /* Case Studies: soft dark behind the headline (top left) and the Brands strip (bottom) so the copy reads over the plate */
 .ov:has(.lwall)::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 46% 30% at 0% 17%,rgba(4,5,8,.88),rgba(4,5,8,.6) 55%,rgba(4,5,8,0)),linear-gradient(0deg,rgba(4,5,8,.82),rgba(4,5,8,.45) 7%,rgba(4,5,8,0) 14%)}
+/* Scene copy and media are simply there when a scene is reached: no fade or slide-in */
+.ov{opacity:1;translate:none;transition:none}
