@@ -40,10 +40,10 @@
 #pw-pop .k i{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 /* Previous Works on wide screens: title in the centre, two rows above, two below, one passing left and right of it */
 .wk-c .wk-l,.wk-c .wk-h,.wk-c .wk-s{left:50%!important;translate:-50% 0!important;text-align:center;white-space:nowrap}
-.wk-c .wk-l{top:42.2%!important}
-.wk-c .wk-h{top:45.8%!important;font-size:3.6cqw!important;line-height:1!important}
+.wk-c .wk-l{top:46.6%!important}
+.wk-c .wk-h{top:50.3%!important;font-size:3.6cqw!important;line-height:1!important}
 .wk-c .wk-h br{display:none}
-.wk-c .wk-s{top:54%!important}
-.wk-c .ov:has(.wk-h)::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 32% 16% at 50% 51%,rgba(3,4,6,.9),rgba(3,4,6,.55) 60%,rgba(3,4,6,0))}
+.wk-c .wk-s{top:58.6%!important}
+.wk-c .ov:has(.wk-h)::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 32% 16% at 50% 55%,rgba(3,4,6,.9),rgba(3,4,6,.55) 60%,rgba(3,4,6,0))}
 #pw-root3{-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 20%,transparent 23%,transparent 77%,#000 80%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 20%,transparent 23%,transparent 77%,#000 80%,#000 97%,transparent)}
 .wk-c .pw-row.pw-up{height:7cqw}
