@@ -273,7 +273,7 @@ var uvc=document.createElement('style');uvc.textContent='.uv{position:absolute;p
 var uv=null;function uvG(n){return UGRP[n]||n}
 function uvPct(v,t){return v/(t?941:1672)*100+'%'}
 function uvMedia(name){var m;if(uvStill){m=document.createElement('img');m.alt='';m.src='/video/ugc/v/'+name+'.jpg'}else{m=document.createElement('video');m.muted=true;m.loop=true;m.playsInline=true;m.setAttribute('playsinline','');m.setAttribute('muted','');m.preload='auto';m.poster='/video/ugc/v/'+name+'.jpg';m.src='/video/ugc/v/'+name+'.mp4'}m._n=name;return m}
-function uvBuild(){var sc=document.querySelectorAll('.scene')[2],ov=sc&&sc.querySelector('.ov');if(!ov)return;
+function uvBuild(){var sc=document.querySelectorAll('.scene')[3],ov=sc&&sc.querySelector('.ov');if(!ov)return;
  if(uv&&ov.contains(uv.root))return;
  var root=document.createElement('div');root.className='uv';root.setAttribute('aria-hidden','true');root.style.cssText='left:0;top:0;width:100%;height:100%';
  var sc2=document.createElement('div');sc2.className='uv-sc';root.appendChild(sc2);
