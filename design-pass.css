@@ -49,3 +49,8 @@
 .wk-c .pw-row.pw-up{height:8.5cqw}
 /* Performance: scenes that are fully faded out are not painted at all */
 .scene[style="opacity: 0;"]{visibility:hidden}
+/* Works hover preview: compact */
+#pw-pop .k{padding:8px 11px 9px}
+#pw-pop .k b{font-size:9px}
+#pw-pop .k span{font-size:12.5px;margin-top:2px}
+#pw-pop .k i{font-size:10.5px;margin-top:3px;line-height:1.3}
