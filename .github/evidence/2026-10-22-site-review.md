@@ -33,3 +33,14 @@ Reviewed all seven desktop scenes and phone Works, UGC, Contact.
 
 ## Limits / rollback
 Real iOS Safari, Android devices, low-power mode and throttled-network performance were not tested. Native browser autoplay policies still apply. Restore the release parent with git revert to roll back this scoped commit. Do not reset or overwrite unrelated work.
+
+## Library follow-up and visual audit
+- Added three existing Healthy Socks campaign concepts, two original Aquadrop images and two new AI-generated Aquadrop variations (alpine lake and studio ice/splash). Library: 132 -> 139. Originals copied to Desktop/untitled folder/Aquadrop-Variations.
+- Small Talk footage was already present as real-promo.mp4; identified by comparing decoded frames with the source. Renamed its title to Small Talk: promo film; no duplicate video added. Metal-chain phone-case work excluded as requested.
+- New image descriptions distinguish concepts and AI-generated variations; original Aquadrop poster remains an existing concept artifact, not a verified award claim.
+- Updated browser regression's expected manifest count. Narrow local browser check: 139 entries, all seven added images decode at declared dimensions, one named Small Talk entry, no excluded phone-case series, seven Works rows. PASS. git diff --check: PASS.
+- Broader existing regression reached mobile navigation but timed out waiting for networkidle while multiple audit browsers were active. Do not claim a fresh full UGC regression pass from this run. No UGC runtime changes in this follow-up.
+- Visual review: viewed all seven scenes at 1440x900 and 390x844. Evidence screenshots: /Users/cno/cno-web-handoff/review-20261022-library (work and think are the actual Cases/Thinking scene hashes).
+- Findings: warm amber palette and left-aligned text are coherent; intro shows solitary ideation despite teams in copy; Cases convincingly shows client presentation; UGC is busy but shows production breadth; Thinking/Systems/Contact repeat solitary person/robot imagery. Systems introduces a colder cosmic environment and abstract symbols rather than product evidence.
+- Mobile: intro/Thinking/Contact crop out the principal people; Cases wall is outside viewport; Systems cards extend offscreen; header links are too small and crowded. These existing design issues are review findings only; no hero/layout changes made pending user's feedback.
+- Remaining: live deployment verification, actual phone/Safari checks, human acceptance of the two generated concepts; minor AI-generated bottle lettering is not print-ready typography.

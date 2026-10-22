@@ -6,7 +6,7 @@ await page.goto(base,{waitUntil:'networkidle'});await page.locator('header a[hre
 assert.equal(await page.locator('.pw-row').count(),7);assert.equal(await page.locator('#pw-root3').count(),0);
 const heading=await page.locator('.wk-h').boundingBox();assert(heading.x<100&&heading.y<200,JSON.stringify(heading));
 assert.match(await page.locator('.wk-s').textContent(),/Identity, campaigns, film and packaging/);
-const manifest=await page.evaluate(()=>fetch('/works/manifest.json').then(r=>r.json()));assert.equal(manifest.length,132);
+const manifest=await page.evaluate(()=>fetch('/works/manifest.json').then(r=>r.json()));assert.equal(manifest.length,139);
 for(const item of manifest)assert(fs.existsSync(require('path').resolve(__dirname,'../..')+item.src),item.src);
 assert(manifest.filter(x=>x.cat.endsWith('CONCEPT')).length>=15);
 await page.screenshot({path:'/tmp/cno-site-review/works-after.png'});
@@ -21,4 +21,4 @@ await page.waitForTimeout(4500);assert.equal(await page.locator('.uv-t img').cou
 await page.goto(base+'/#contact');await page.waitForTimeout(1200);assert(await page.locator('.uv-t video').evaluateAll(vs=>vs.every(v=>v.paused)));
 await page.emulateMedia({reducedMotion:'reduce'});await page.reload({waitUntil:'networkidle'});await page.waitForFunction(()=>document.querySelectorAll('.uv-t').length===21);assert.equal(await page.locator('.uv-t video').count(),0);assert.equal(await page.locator('.uv-t img').count(),21);
 const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});await mobile.goto(base,{waitUntil:'networkidle'});await mobile.locator('header .mnav a[href="#works"]').click();await mobile.waitForTimeout(1800);await mobile.screenshot({path:'/tmp/cno-site-review/works-mobile.png'});await mobile.goto(base+'/#ugc',{waitUntil:'networkidle'});await mobile.waitForTimeout(2000);const boxes=await mobile.locator('.uv-t').evaluateAll(ts=>ts.map(t=>{const r=t.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom}}));assert.equal(boxes.length,21);await mobile.screenshot({path:'/tmp/cno-site-review/ugc-mobile.png'});assert(boxes.every(r=>r.x>=0&&r.right<=390&&r.y>400&&r.bottom<=844));await mobile.screenshot({path:'/tmp/cno-site-review/ugc-mobile.png'});await mobile.goto(base+'/#contact',{waitUntil:'networkidle'});await mobile.waitForTimeout(2000);await mobile.screenshot({path:'/tmp/cno-site-review/contact-mobile.png'});
-assert.deepEqual(errors,[]);console.log(JSON.stringify({result:'PASS',library:manifest.length,added:15,ugcTiles:21,playing:advanced.length,pausedWhenInactive:true,reducedMotion:true,consoleErrors:errors}));await browser.close()})().catch(e=>{console.error(e);process.exit(1)})
+assert.deepEqual(errors,[]);console.log(JSON.stringify({result:'PASS',library:manifest.length,added:22,ugcTiles:21,playing:advanced.length,pausedWhenInactive:true,reducedMotion:true,consoleErrors:errors}));await browser.close()})().catch(e=>{console.error(e);process.exit(1)})
