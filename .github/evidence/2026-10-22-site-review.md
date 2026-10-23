@@ -53,3 +53,5 @@ Real iOS Safari, Android devices, low-power mode and throttled-network performan
 - No homepage source assets/layout changed. User requested review before deciding; concept awaits feedback.
 - ClaimQI source check: ChatGPT library is not exposed to connected tools. Existing local campaign deck/PDF and ClaimQI-storyboard-v3.png are present; compared local work/claimqi assets and contact sheet. They use the same dark navy/cyan concept but differ in storyboard artwork/layout; cannot establish that original ChatGPT library files are available from current access.
 - Remaining: user's creative acceptance of hero direction; user may provide ChatGPT Library images if direct account access is desired.
+
+- Production deployment of hover caption fix verified 2026-10-23: live HTML serves design-pass.css v22 and case-cards.js v41; all 139 live captions fit within hover cards at 1440x900 and 800x600. PASS.
