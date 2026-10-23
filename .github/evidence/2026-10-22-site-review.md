@@ -45,3 +45,11 @@ Real iOS Safari, Android devices, low-power mode and throttled-network performan
 - Mobile: intro/Thinking/Contact crop out the principal people; Cases wall is outside viewport; Systems cards extend offscreen; header links are too small and crowded. These existing design issues are review findings only; no hero/layout changes made pending user's feedback.
 - Production verification after commit 26a40ac: https://cnonclstudio.com served all 139 entries; all seven new images decoded at declared dimensions; one named Small Talk entry; excluded phone-case series absent; Works rendered seven rows. Narrow Chromium check PASS.
 - Remaining: actual phone/Safari checks and human acceptance of the two generated concepts; minor AI-generated bottle lettering is not print-ready typography.
+
+## Library hover caption fix and hero concept — 2026-10-23
+- Replaced the fixed 92px caption budget and two-line description clamp with measured full-caption height; kept full copy visible, wrapping long words, and constrained hover width/placement to the viewport. CSS/JS cache keys advanced.
+- Added .github/checks/library-caption.cjs; all 139 manifest entries fit at 1440x900 and 800x600. Node syntax and git diff checks pass.
+- Built a standalone, unshipped homepage concept at /Users/cno/cno-web-handoff/hero-preview-20261022/preview.html with desktop and mobile screenshots. Current headline and support copy retained; generated new landscape and portrait collaborative studio art. Mobile has its own composition and readable safe space.
+- No homepage source assets/layout changed. User requested review before deciding; concept awaits feedback.
+- ClaimQI source check: ChatGPT library is not exposed to connected tools. Existing local campaign deck/PDF and ClaimQI-storyboard-v3.png are present; compared local work/claimqi assets and contact sheet. They use the same dark navy/cyan concept but differ in storyboard artwork/layout; cannot establish that original ChatGPT library files are available from current access.
+- Remaining: user's creative acceptance of hero direction; user may provide ChatGPT Library images if direct account access is desired.
